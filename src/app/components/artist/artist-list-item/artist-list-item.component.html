@@ -1,0 +1,26 @@
+<mat-list-item matRipple id="artist-list-item" (click)="goToArtist()">
+
+  <!-- Album Cover -->
+  <img id="artist-cover" matListAvatar [src]="artist.artistCoverPhoto">
+
+  <!-- Artist Name -->
+  <h3 style="font-weight: bold;" matLine> {{artist.artistName}} </h3>
+  <p style="color: gray;" matLine>{{artist.artistSubscribers}} Subscribers</p>
+
+  <!-- Artist Meta Data TBD -->
+  <!-- <p matLine>
+    <span class="song-meta-info"> {{song.artistName}} </span>
+    <span class="song-meta-info"> • {{song.albumName}} </span>
+    <span class="song-meta-info"> • {{song.songLength}} </span>
+  </p> -->
+
+  <button (click)="stopDOMTree($event)" mat-button [matMenuTriggerFor]="moreOptions"><i class="material-icons-outlined">more_vert</i></button>
+
+  <mat-menu #moreOptions="matMenu">
+    <button mat-menu-item>
+      <mat-icon>shuffle</mat-icon>
+      <span>Shuffle Play</span>
+    </button>
+  </mat-menu>
+
+</mat-list-item>

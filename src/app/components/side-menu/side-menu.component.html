@@ -1,0 +1,25 @@
+<mat-action-list>
+  <button mat-list-item (click)="openHomePage()">
+    <i class="material-icons-outlined">home</i>
+    Home
+  </button>
+  <button mat-list-item (click)="openSearchPage()">
+    <i class="material-icons-outlined">search</i>
+    Search
+  </button>
+  <button mat-list-item (click)="openMyMusicPage()">
+    <i class="material-icons-outlined">library_music</i>
+    My Music
+  </button>
+  <mat-divider></mat-divider>
+  <p>Playlists</p>
+  <button (click)="openCreatePlaylistDialog()" mat-list-item>
+    <i class="material-icons-outlined">add</i>
+    Create Playlist
+  </button>
+  <mat-divider></mat-divider>
+  <div class="playlist-container" *ngFor="let playlist of playlists">
+    <button (click)="goToPlaylist(playlist.playlistID)" mat-list-item> {{playlist.playlistName}} </button>
+  </div>
+
+</mat-action-list>

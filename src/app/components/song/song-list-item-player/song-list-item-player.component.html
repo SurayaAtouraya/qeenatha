@@ -1,0 +1,35 @@
+<mat-list-item id="song-list-item" (window:resize)="onResize($event)">
+
+  <!-- Album Cover -->
+  <img id="song-cover" matListAvatar [src]="song.albumCover">
+
+  <!-- Song Name -->
+  <h3 id="song-name" matLine> {{song.songName}} </h3>
+
+  <!-- Song Meta Info (Artist Name, Album Name, Song Length) -->
+  <p matLine>
+    <span (click)="goToArtist()" class="song-meta-info song-meta-info-selectable">{{song.artistName}}</span> •
+    <span (click)="goToAlbum()" class="song-meta-info song-meta-info-selectable">{{song.albumName}}</span> •
+    <span class="song-meta-info">{{song.songLength}}</span>
+  </p>
+
+  <button (click)="dislikeSong()" class="song-options-button" mat-icon-button>
+    <i [ngClass] = "{'material-icons'         :  this.song.songDisliked,
+                     'material-icons-outlined': !this.song.songDisliked}">thumb_down</i>
+  </button>
+  <button (click)="likeSong()" mat-icon-button class="song-options-button">
+    <i [ngClass] = "{'material-icons'         :  this.song.songLiked,
+                     'material-icons-outlined': !this.song.songLiked}">thumb_up</i>
+  </button>
+  <button class="song-options-button" mat-icon-button [matMenuTriggerFor]="moreOptions" >
+    <i class="material-icons-outlined">more_vert</i>
+  </button>
+
+  <mat-menu #moreOptions="matMenu">
+    <button mat-menu-item>
+      <mat-icon>album</mat-icon>
+      <span>Go to Album</span>
+    </button>
+  </mat-menu>
+
+</mat-list-item>

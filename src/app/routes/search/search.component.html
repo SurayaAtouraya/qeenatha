@@ -1,0 +1,5 @@
+<form (submit)="search()">
+  <app-search-bar></app-search-bar>
+</form>
+
+<app-search-results *ngIf="searching" [songData]="searchSongs" [albumData]="searchAlbums" [artistData]="searchArtists"></app-search-results>

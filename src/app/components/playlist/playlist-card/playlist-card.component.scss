@@ -1,0 +1,39 @@
+mat-card {
+  // max-width: 300px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+img {
+  background-size: cover;
+  height: 200px;
+  width: 200px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.default-image {
+  height: 200px;
+  width: 200px;
+}
+
+.playlist-name {
+  font-size: 16px;
+}
+
+.playlist-song-count {
+  color: gray;
+}
+
+// Prevent Card From Expanding Due to Ripple
+.mat-card-content {
+  margin-bottom: 0;
+}
+
+.default-playlist-cover {
+  margin: auto;
+  display: block;
+  font-size: 100px;
+  height: 100px;
+  width: 100px;
+}

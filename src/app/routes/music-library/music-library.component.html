@@ -1,0 +1,32 @@
+<mat-tab-group mat-stretch-tabs>
+  <mat-tab label="Playlists">
+    <app-playlist-tab [playlistData]="playlists"></app-playlist-tab>
+  </mat-tab>
+  <mat-tab label="Artists">
+    <app-music-library-artist-header></app-music-library-artist-header>
+    <mat-list>
+      <div *ngFor="let artist of subscribedArtists">
+        <app-artist-list-item [artistData]="artist"></app-artist-list-item>
+        <mat-divider></mat-divider>
+      </div>
+
+    </mat-list>
+
+  </mat-tab>
+
+  <mat-tab label="Albums">
+    <app-music-library-album-header></app-music-library-album-header>
+    <app-music-library-album></app-music-library-album>
+  </mat-tab>
+
+  <mat-tab label="Songs">
+    <app-music-library-song></app-music-library-song>
+    <app-music-library-song-empty *ngIf="songCount == 0"></app-music-library-song-empty>
+    <mat-list>
+      <div *ngFor="let song of likedSongs">
+        <app-song-list-item-liked-song [songData]="song"></app-song-list-item-liked-song>
+        <mat-divider></mat-divider>
+      </div>
+    </mat-list>
+  </mat-tab>
+</mat-tab-group>

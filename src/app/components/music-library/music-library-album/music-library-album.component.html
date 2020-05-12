@@ -1,0 +1,6 @@
+<mat-list>
+  <div *ngFor="let album of savedAlbums">
+    <app-album-list-item [albumData]="album"></app-album-list-item>
+    <mat-divider></mat-divider>
+  </div>
+</mat-list>

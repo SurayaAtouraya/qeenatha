@@ -1,0 +1,6 @@
+<mat-form-field appearance="outline">
+  <mat-label>Search</mat-label>
+  <input matInput [(ngModel)]="search">
+    <mat-icon *ngIf="search.length != 0" class="clear-button" (click)="clearSearch();stopDOMTree($event)" mat-icon-button matSuffix>close</mat-icon>
+</mat-form-field>
+

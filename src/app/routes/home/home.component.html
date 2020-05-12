@@ -1,0 +1,29 @@
+<div class="container">
+
+<h1 class="title">Latest Albums</h1>
+
+<mat-grid-list [cols]="cols" rowHeight="300px" (window:resize)="windowService.onResize()">
+  <mat-grid-tile *ngFor="let album of newestAlbums">
+    <app-album-card [albumData]="album"></app-album-card>
+  </mat-grid-tile>
+</mat-grid-list>
+
+<h1 class="title">New Releases</h1>
+
+<mat-list>
+  <div *ngFor="let song of newestSongs">
+    <app-song-list-item [songData]="song"></app-song-list-item>
+    <mat-divider></mat-divider>
+  </div>
+</mat-list>
+
+
+<h1 class="title">Artists For You</h1>
+
+<mat-grid-list [cols]="cols" rowHeight="300px" (window:resize)="windowService.onResize()">
+  <mat-grid-tile *ngFor="let artist of newestArtists">
+    <app-artist-card [artistData]="artist"></app-artist-card>
+  </mat-grid-tile>
+</mat-grid-list>
+
+</div>

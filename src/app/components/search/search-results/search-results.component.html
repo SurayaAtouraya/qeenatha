@@ -1,0 +1,41 @@
+<mat-chip-list>
+  <app-search-filter-chipset (filter)="onFilter($event)"></app-search-filter-chipset>
+</mat-chip-list>
+
+
+<div *ngIf="!filter || filter === 'Song'">
+  <h1 class="title">Songs</h1>
+  <mat-list>
+    <div *ngFor="let song of searchSongs">
+      <app-song-list-item [songData]="song"></app-song-list-item>
+      <mat-divider></mat-divider>
+    <!-- <app-song-list-item></app-song-list-item>
+    <mat-divider></mat-divider>
+    <app-song-list-item></app-song-list-item>
+    <mat-divider></mat-divider>
+    <app-song-list-item></app-song-list-item> -->
+    </div>
+  </mat-list>
+</div>
+
+<div *ngIf="!filter || filter === 'Artist'">
+  <h1 class="title">Artists</h1>
+  <mat-list>
+    <div *ngFor="let artist of searchArtists">
+      <app-artist-list-item [artistData]="artist"></app-artist-list-item>
+      <mat-divider></mat-divider>
+    </div>
+  </mat-list>
+</div>
+
+<div *ngIf="!filter || filter === 'Album'">
+  <h1 class="title">Albums</h1>
+  <mat-list>
+    <div *ngFor="let album of searchAlbums">
+      <app-album-list-item [albumData]="album"></app-album-list-item>
+      <mat-divider></mat-divider>
+    </div>
+  </mat-list>
+</div>
+
+

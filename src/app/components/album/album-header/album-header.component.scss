@@ -1,0 +1,41 @@
+mat-card {
+  margin: 0 auto;
+  padding: 32px;
+  font-size: 16px;
+}
+
+mat-card-actions {
+  margin: 0;
+}
+
+.mat-card-subtitle {
+  font-size: 16px;
+}
+
+.mat-card-avatar {
+  height: 300px;
+  width: 300px;
+  border-radius: 0;
+}
+
+.mat-card-title {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.mat-card-header .mat-card-title {
+  margin-top: -4px;
+  // margin-bottom: 32px;
+}
+
+mat-chip-list {
+  display: inline-block;
+  // vertical-align: middle;
+  height: 38px;
+  vertical-align: middle;
+  margin-left: 16px;
+}
+
+mat-chip {
+  cursor: pointer;
+}

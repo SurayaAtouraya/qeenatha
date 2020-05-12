@@ -1,0 +1,12 @@
+<div class="container">
+  <app-playlist-header [playlistData]="playlist"></app-playlist-header>
+
+  <mat-list>
+    <div *ngFor="let song of playlistSongs">
+      <app-song-list-item-playlist [songData]="song"></app-song-list-item-playlist>
+      <mat-divider></mat-divider>
+    </div>
+
+  </mat-list>
+</div>
+

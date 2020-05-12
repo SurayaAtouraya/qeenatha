@@ -1,0 +1,46 @@
+@font-face {
+  font-family: 'AssyrianEstrangela';
+  src: url('../assets/NotoSansSyriac-Regular.ttf') format("opentype");
+}
+
+@font-face {
+  font-family: 'AssyrianEastern';
+  src: url('../assets/NotoSansSyriacEastern-Regular.ttf') format("opentype");
+}
+
+mat-drawer-container {
+  height: 100% !important;
+}
+
+mat-drawer {
+  width: 200px;
+  background-color: #d5e8ff;
+  height: 100% !important;
+}
+
+mat-drawer, app-side-menu {
+  height: 100vh;
+}
+
+a {
+  margin: 0 auto;
+}
+
+app-player-toolbar {
+  position: fixed;
+  bottom: 0;
+  left: 200px;
+  width: calc(100% - 200px);
+}
+
+.container {
+  margin: 32px;
+}
+
+img {
+  display: block;
+  height: 100px;
+  width: 100px;
+  margin: 0px auto;
+  margin-top: 16px;
+}

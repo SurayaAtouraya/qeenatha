@@ -1,0 +1,16 @@
+<div style="height: 100%;" (window:resize)="windowService.onResize()">
+  <mat-drawer-container>
+    <mat-drawer mode="side" opened>
+      <img src="../../assets/logo.png" height="150" width="150">
+      <app-side-menu></app-side-menu>
+    </mat-drawer>
+    <mat-drawer-content>
+      <app-navbar *ngIf="!isMobile"></app-navbar>
+      <router-outlet class="container" *ngIf="!isMobile" style="z-index: 0;"></router-outlet>
+      <app-mobile-display *ngIf="isMobile"></app-mobile-display>
+      <div *ngIf="songPlaying">
+        <app-player-toolbar [songPlaying]="songPlaying" style="z-index: 1; background-color: #fafafa;"></app-player-toolbar>
+      </div>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</div>

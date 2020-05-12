@@ -1,0 +1,34 @@
+<div class="container">
+
+  <app-artist-header></app-artist-header>
+
+  <h2>Top Songs</h2>
+
+  <mat-list>
+    <div *ngFor="let song of songs">
+      <app-song-list-item-artist [songData]="song"></app-song-list-item-artist>
+      <mat-divider></mat-divider>
+    </div>
+  </mat-list>
+
+  <button (click)="goToAllSongs()" mat-raised-button style="margin-top:16px">See All Songs</button>
+
+  <h2 style="margin-top:16px">Albums</h2>
+
+  <mat-grid-list [cols]="cols" rowHeight="300px" (window:resize)="onResize($event)">
+
+    <mat-grid-tile *ngFor="let album of albums">
+      <app-album-card [albumData]="album"></app-album-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <!-- <mat-grid-list cols="4" rowHeight="500px">
+    <mat-grid-tile><app-album-card></app-album-card></mat-grid-tile>
+    <mat-grid-tile><app-album-card></app-album-card></mat-grid-tile>
+    <mat-grid-tile><app-album-card></app-album-card></mat-grid-tile>
+    <mat-grid-tile><app-album-card></app-album-card></mat-grid-tile>
+    <mat-grid-tile><app-album-card></app-album-card></mat-grid-tile>
+    <mat-grid-tile><app-album-card></app-album-card></mat-grid-tile>
+  </mat-grid-list> -->
+
+</div>

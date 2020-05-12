@@ -1,0 +1,32 @@
+// Kinda Yucky no?
+mat-drawer-container {
+  height: 400px;
+}
+
+.mat-dialog-content {
+  padding: 0;
+}
+
+mat-list-item {
+  cursor: pointer;
+}
+
+mat-drawer-content {
+  padding: 24px 24px 24px 48px;
+}
+
+mat-form-field {
+  width: 200px;
+}
+
+.close-dialog-button {
+  margin: 0;
+}
+
+.mat-dialog-title {
+  display: inline-block;
+}
+
+#option-title {
+  font-weight: bold;
+}

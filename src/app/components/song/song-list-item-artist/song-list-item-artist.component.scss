@@ -1,0 +1,77 @@
+#song-cover {
+  height: 56px;
+  width: 56px;
+  border-radius: 7px;
+}
+
+#song-list-item {
+  height: 72px;
+}
+
+.song-meta-info {
+  color: gray;
+}
+
+.material-icons-outlined {
+  color: gray;
+  opacity: 0.8;
+  // margin-right: 16px;
+}
+
+mat-list-item:hover {
+  .song-options-button {
+    visibility: visible;
+  }
+}
+
+.song-options-button {
+  visibility: hidden;
+  margin-left: 8px;
+}
+
+.song-options-button-selected {
+  visibility: visible;
+  margin-left: 8px;
+}
+
+#song-name {
+  font-weight: bold;
+}
+
+.song-meta-info-selectable {
+  cursor: pointer;
+}
+
+.song-meta-info-selectable:hover {
+  text-decoration: underline;
+}
+
+//**********************************************************************************************************************
+// Album Cover & Play Button Combo
+
+.play-button {
+  position: absolute;
+  margin-top: 8px;
+  margin-left: -48px;
+  color: white;
+  visibility: hidden;
+}
+
+#album-cover-image {
+  height: 56px;
+  width: 56px;
+  border-radius: 7px;
+}
+
+.album-cover-play-button-container:hover {
+
+  #album-cover-image {
+    filter: brightness(60%);
+  }
+
+  .play-button {
+    visibility: visible;
+  }
+}
+
+//**********************************************************************************************************************

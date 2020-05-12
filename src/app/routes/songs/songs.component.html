@@ -1,0 +1,8 @@
+<h1>Songs</h1>
+
+<div *ngFor="let song of artistSongs">
+  <mat-list>
+    <app-song-list-item-artist [songData]="song"></app-song-list-item-artist>
+    <mat-divider></mat-divider>
+  </mat-list>
+</div>

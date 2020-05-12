@@ -1,0 +1,40 @@
+#song-number {
+  color: gray;
+  padding-left: 16px;
+  padding-top: 10px;
+}
+
+mat-list-item:hover {
+  .song-options-button {
+    visibility: visible;
+  }
+}
+
+.song-options-button {
+  visibility: hidden;
+  margin-left: 8px;
+}
+
+.song-options-button-selected {
+  visibility: visible;
+  margin-left: 8px;
+}
+
+#song-length {
+  color: gray;
+  margin: 0 0 0 16px;
+}
+
+#song-name {
+  font-weight: bold;
+}
+
+.song-info {
+  width: 100%;
+  text-align: left;
+  margin: 0;
+}
+
+.song-info:last-child {
+  margin-right: 8px;
+}

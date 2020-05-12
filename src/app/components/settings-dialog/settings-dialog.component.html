@@ -1,0 +1,56 @@
+<div>
+<h1 mat-dialog-title>Settings</h1>
+<button mat-dialog-title mat-icon-button class="material-icons close-dialog-button">
+  <mat-icon>clear</mat-icon>
+</button>
+</div>
+<div mat-dialog-content>
+  <mat-divider></mat-divider>
+  <mat-drawer-container class="example-container">
+    <mat-drawer mode="side" opened>
+
+      <mat-action-list>
+        <button mat-list-item (click)="openPersonalizationSettings()">Personalization</button>
+        <button mat-list-item (click)="openLanguageSettings()"> Language </button>
+        <button mat-list-item> About </button>
+      </mat-action-list>
+
+    </mat-drawer>
+    <mat-drawer-content>
+
+      <ng-container *ngIf="screen === 'Language'">
+
+          <mat-form-field>
+            <mat-label>Font Style</mat-label>
+            <mat-select [(value)]="selectedFont">
+              <mat-option *ngFor="let font of fonts" [value]="font">
+                {{font}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div style="font-size: 32px;float: right;padding-top: 16px;"
+          [ngClass]="{'assyrian-estrangela': selectedFont === 'Noto Sans Syriac Estrangela',
+                      'assyrian-eastern': selectedFont === 'Noto Sans Syriac Eastern'}">
+                           ܩܝܢܬ݂ܐ
+          </div>
+          <mat-divider></mat-divider>
+
+
+      </ng-container>
+
+      <ng-container *ngIf="screen === 'Personalization'">
+
+        <mat-list>
+          <mat-list-item>
+            <h3 id="option-title" matLine>Dark Mode</h3>
+            <mat-slide-toggle></mat-slide-toggle>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+         </mat-list>
+
+      </ng-container>
+
+    </mat-drawer-content>
+
+  </mat-drawer-container>
+</div>

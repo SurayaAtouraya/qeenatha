@@ -1,0 +1,25 @@
+mat-card {
+  // width: 75%;
+  margin: 0 auto;
+  padding: 32px;
+}
+
+.mat-card-avatar {
+  height: 250px;
+  width: 250px;
+  border-radius: 0;
+}
+
+.mat-card-subtitle {
+  font-size: 16px;
+}
+
+.mat-card-title {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.mat-card-header .mat-card-title {
+  margin-top: 3px;
+  margin-bottom: 32px;
+}

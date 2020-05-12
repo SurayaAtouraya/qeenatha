@@ -1,0 +1,50 @@
+#song-number {
+  color: gray;
+  padding-left: 16px;
+  padding-top: 10px;
+}
+
+.song-options-button {
+  margin-left: 8px;
+}
+
+.song-options-button-selected {
+  margin-left: 8px;
+}
+
+#song-length {
+  color: gray;
+  margin: 0 0 0 16px;
+}
+
+#song-name {
+  font-weight: bold;
+}
+
+.song-info {
+  width: 100%;
+  text-align: left;
+  margin: 0;
+}
+
+.song-info:last-child {
+  margin-right: 8px;
+}
+
+#song-cover {
+  height: 56px;
+  width: 56px;
+  border-radius: 7px;
+}
+
+.song-meta-info-selectable {
+  cursor: pointer;
+}
+
+.song-meta-info-selectable:hover {
+  text-decoration: underline;
+}
+
+.song-meta-info {
+  color: gray;
+}

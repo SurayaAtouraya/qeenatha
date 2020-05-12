@@ -1,0 +1,41 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+
+    <button (click)="goToBillboardScreen()" mat-button>Billboard Charts</button>
+
+    <span class="spacer"></span>
+
+    <!-- Not Logged In-->
+    <button *ngIf="!loggedIn" mat-button (click)="openLogInDialog()">Log In</button>
+    <button *ngIf="!loggedIn" mat-button (click)="openSignUpDialog()">Sign Up</button>
+
+    <!-- Logged In -->
+
+    <!-- Profile -->
+    <button *ngIf="loggedIn"
+            mat-icon-button class="material-icons" [matMenuTriggerFor]="menu">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+
+    <!-- Profile Menu -->
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <mat-icon style="margin-bottom: 8px;">account_box</mat-icon>
+        <span>My Account</span>
+      </button>
+      <button mat-menu-item (click)="openSettingsDialog()">
+        <mat-icon style="margin-bottom: 8px;">settings</mat-icon>
+        <span>Settings</span>
+      </button>
+      <button mat-menu-item (click)="logOut()">
+        <mat-icon style="margin-bottom: 8px;" (click)="logOut()">exit_to_app</mat-icon>
+        <span>Log Out</span>
+      </button>
+    </mat-menu>
+
+
+
+
+
+
+  </mat-toolbar-row>

@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>New Playlist</h1>
+<div mat-dialog-content>
+  <!-- Playlist Name-->
+  <mat-form-field>
+    <mat-label>Playlist Name</mat-label>
+    <input matInput [(ngModel)]="playlistName">
+  </mat-form-field>
+
+  <!-- Playlist Description -->
+  <mat-form-field>
+    <mat-label>Playlist Description</mat-label>
+    <textarea matInput [(ngModel)]="playlistDescription"
+              cdkTextareaAutosize cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5"></textarea>
+  </mat-form-field>
+
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button (click)="savePlaylist()">Save</button>
+</div>

@@ -1,0 +1,78 @@
+#song-list-item {
+  height: 72px;
+}
+
+.song-meta-info {
+  color: gray;
+}
+
+.material-icons-outlined {
+  color: gray;
+  opacity: 0.8;
+  // margin-right: 16px;
+}
+
+mat-list-item:hover {
+  .song-options-button {
+    visibility: visible;
+  }
+}
+
+.song-meta-info-selectable {
+  cursor: pointer;
+}
+
+.song-meta-info-selectable:hover {
+  text-decoration: underline;
+}
+
+//**********************************************************************************************************************
+// Album Cover & Play Button Combo
+
+// Setting Container size for image and play button
+.album-cover-play-button-container {
+  width: 56px !important;
+  height: 56px !important;
+}
+
+.play-button {
+  position: absolute;
+  margin-top: 8px;
+  margin-left: -48px;
+  color: white;
+  visibility: hidden;
+}
+
+#album-cover-image {
+  height: 56px;
+  width: 56px;
+  border-radius: 7px;
+}
+
+// On hovering the item, the play button appears and dims the image
+.mat-list-item:hover {
+
+  #album-cover-image {
+    filter: brightness(60%);
+  }
+
+  .play-button {
+    visibility: visible;
+  }
+}
+
+//**********************************************************************************************************************
+
+#song-name {
+  font-weight: bold;
+}
+
+.song-options-button {
+  visibility: hidden;
+  margin-left: 8px;
+}
+
+.song-options-button-selected {
+  visibility: visible;
+  margin-left: 8px;
+}
