@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { Playlist } from 'src/app/test-data.service';
 
 @Component({
   selector: 'app-playlist-card',

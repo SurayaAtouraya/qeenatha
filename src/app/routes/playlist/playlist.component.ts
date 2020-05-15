@@ -1,8 +1,6 @@
 import { Song } from './../../components/song/song-list-item/song-list-item.component';
-import { TestDataService } from 'src/app/test-data.service';
-import { Component, OnInit } from '@angular/core';
-import { Playlist } from 'src/app/components/playlist/playlist-card/playlist-card.component';
-import { Router } from '@angular/router';
+import { TestDataService, Playlist } from 'src/app/test-data.service';
+import { Component, OnInit } from '@angular/core';import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-playlist',
