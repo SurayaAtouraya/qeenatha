@@ -1,8 +1,6 @@
 import { Injectable, HostListener } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Album } from './components/album/album-card/album-card.component';
 import { Song } from './components/song/song-list-item/song-list-item.component';
-import { Playlist } from './components/playlist/playlist-card/playlist-card.component';
 import { Artist } from './components/artist/artist-list-item/artist-list-item.component';
 
 @Injectable({
@@ -1046,4 +1044,19 @@ export interface BillboardSong {
   duration: number;
 }
 
+export interface Album {
+  albumName: string;
+  albumYear: string;
+  albumCover: string;
+  albumArtist?: string;
+  albumDescription?: string;
+  albumID?: string;
+  songCount?: number;
+}
 
+export interface Playlist {
+  playlistName: string;
+  songCount?: number;
+  playlistCover?: string;
+  playlistID?: string;
+}

@@ -13,6 +13,7 @@ export class ArtistComponent implements OnInit {
   constructor(public testDataService: TestDataService, private router: Router) { }
 
   albums = [];
+  albumsCardData = [];
   songs = [];
 
   song: Song;
@@ -26,7 +27,20 @@ export class ArtistComponent implements OnInit {
   ngOnInit(): void {
 
     // TODO API CALL TO GET LATEST RELEASED ALBUMS (8 NEWEST)
-    this.testDataService.newestAlbumCards.subscribe(albums => this.albums = albums);
+    this.testDataService.newestAlbumCards.subscribe(albums => {
+      this.albums = albums;
+    });
+    this.albums.forEach(album => {
+      this.albumsCardData.push(
+        {
+          imgSrc: album.albumCover,
+          title: album.albumName,
+          subtitle: album.albumYear,
+          dataType: 'album',
+          dataID: album.albumName
+        }
+      );
+    });
 
     window.scrollTo(0, 0);
 

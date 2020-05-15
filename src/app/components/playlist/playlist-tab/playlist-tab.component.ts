@@ -1,6 +1,6 @@
 import { WindowService } from './../../../window.service';
 import { Component, OnInit, Input } from '@angular/core';
-import { Playlist } from '../playlist-card/playlist-card.component';
+import { Playlist } from 'src/app/test-data.service';
 
 @Component({
   selector: 'app-playlist-tab',

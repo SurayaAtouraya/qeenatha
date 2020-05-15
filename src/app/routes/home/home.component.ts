@@ -1,6 +1,7 @@
-import { TestDataService } from './../../test-data.service';
+import { TestDataService, Album } from './../../test-data.service';
 import { Component, OnInit } from '@angular/core';
 import { WindowService } from 'src/app/window.service';
+import { Artist } from 'src/app/components/artist/artist-list-item/artist-list-item.component';
 
 @Component({
   selector: 'app-home',
@@ -11,9 +12,11 @@ export class HomeComponent implements OnInit {
 
   constructor(public windowService: WindowService, public testDataService: TestDataService) { }
 
-  newestAlbums = [];
+  newestAlbums: Album[];
+  newestAlbumsCardData = [];
   newestSongs = [];
-  newestArtists = [];
+  newestArtists: Artist[];
+  newestArtistsCardData = [];
 
   cols: number;
 
@@ -23,6 +26,17 @@ export class HomeComponent implements OnInit {
 
     // TODO API CALL TO GET LATEST RELEASED ALBUMS (8 NEWEST)
     this.testDataService.newestAlbumCards.subscribe(albums => this.newestAlbums = albums);
+    this.newestAlbums.forEach(album => {
+      this.newestAlbumsCardData.push(
+        {
+          imgSrc: album.albumCover,
+          title: album.albumName,
+          subtitle: album.albumYear,
+          dataType: 'album',
+          dataID: album.albumName
+        }
+      );
+    });
 
     // TODO API CALL TO GET 8 random songs of 8 released albums
     this.testDataService.newestSongs.subscribe(songs => {
@@ -50,6 +64,17 @@ export class HomeComponent implements OnInit {
     // TODO Get 8 random?/newewst? artists
     this.testDataService.newestArtists.subscribe(artists => {
       this.newestArtists = artists;
+    });
+    this.newestArtists.forEach(artist => {
+      this.newestArtistsCardData.push(
+        {
+          imgSrc: artist.artistCoverPhoto,
+          title: artist.artistName,
+          subtitle: artist.albumCount + ' Albums',
+          dataType: 'artist',
+          dataID: artist.artistName
+        }
+      );
     });
 
   }

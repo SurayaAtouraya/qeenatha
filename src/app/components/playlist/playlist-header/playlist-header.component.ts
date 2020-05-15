@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Artist } from '../../artist/artist-list-item/artist-list-item.component';
-import { Playlist } from '../playlist-card/playlist-card.component';
+import { Playlist } from 'src/app/test-data.service';
 
 @Component({
   selector: 'app-playlist-header',

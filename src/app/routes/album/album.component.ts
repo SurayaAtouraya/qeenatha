@@ -1,6 +1,5 @@
-import { TestDataService } from 'src/app/test-data.service';
+import { TestDataService, Album } from 'src/app/test-data.service';
 import { Component, OnInit, Input } from '@angular/core';
-import { Album } from 'src/app/components/album/album-card/album-card.component';
 import { Router } from '@angular/router';
 import { Song } from 'src/app/components/song/song-list-item/song-list-item.component';
 

@@ -1,9 +1,8 @@
-import { TestDataService } from 'src/app/test-data.service';
+import { TestDataService, Playlist } from 'src/app/test-data.service';
 import { PlaylistDialogComponent } from './../playlist/playlist-dialog/playlist-dialog.component';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
-import { Playlist } from '../playlist/playlist-card/playlist-card.component';
 
 @Component({
   selector: 'app-side-menu',

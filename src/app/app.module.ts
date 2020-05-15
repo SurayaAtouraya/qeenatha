@@ -14,7 +14,6 @@ import { AlbumComponent } from './routes/album/album.component';
 import { HomeComponent } from './routes/home/home.component';
 import { MusicLibraryComponent } from './routes/music-library/music-library.component';
 import { SongListItemComponent } from './components/song/song-list-item/song-list-item.component';
-import { AlbumCardComponent } from './components/album/album-card/album-card.component';
 import { SongListItemAlbumComponent } from './components/song/song-list-item-album/song-list-item-album.component';
 import { SongListItemArtistComponent } from './components/song/song-list-item-artist/song-list-item-artist.component';
 import { ArtistListItemComponent } from './components/artist/artist-list-item/artist-list-item.component';
@@ -44,16 +43,16 @@ import { SearchResultsComponent } from './components/search/search-results/searc
 import { SearchFilterChipsetComponent } from './components/search/search-filter-chipset/search-filter-chipset.component';
 import { AlbumListItemComponent } from './components/album/album-list-item/album-list-item.component';
 import { MusicLibraryAlbumHeaderComponent } from './components/music-library/music-library-album-header/music-library-album-header.component';
-import { ArtistCardComponent } from './components/artist/artist-card/artist-card.component';
 import { SongsComponent } from './routes/songs/songs.component';
 import { SongListItemPlaylistComponent } from './components/song/song-list-item-playlist/song-list-item-playlist.component';
 import { QueueComponent } from './components/queue/queue.component';
+import { RadioComponent } from './routes/radio/radio.component';
+import { CardComponent } from './components/card/card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BillboardComponent,
-    AlbumCardComponent,
     SongListItemComponent,
     SongListItemAlbumComponent,
     SongListItemArtistComponent,
@@ -93,10 +92,11 @@ import { QueueComponent } from './components/queue/queue.component';
     SearchResultsComponent,
     AlbumListItemComponent,
     MusicLibraryAlbumHeaderComponent,
-    ArtistCardComponent,
     SongsComponent,
     SongListItemPlaylistComponent,
     QueueComponent,
+    RadioComponent,
+    CardComponent,
   ],
   imports: [
     BrowserModule,

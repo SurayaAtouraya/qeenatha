@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Playlist } from '../playlist-card/playlist-card.component';
 import { MatDialogRef } from '@angular/material/dialog';
+import { Playlist } from 'src/app/test-data.service';
 
 @Component({
   selector: 'app-playlist-dialog',

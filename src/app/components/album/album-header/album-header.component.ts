@@ -1,6 +1,5 @@
-import { TestDataService } from 'src/app/test-data.service';
+import { TestDataService, Album } from 'src/app/test-data.service';
 import { Component, OnInit, Input } from '@angular/core';
-import { Album } from '../album-card/album-card.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({

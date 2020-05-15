@@ -40,6 +40,10 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['/billboards']); //, this.song.artistID
   }
 
+  goToRadioScreen() {
+    this.router.navigate(['/radio']); //, this.song.artistID
+  }
+
   openSettingsDialog(): void {
     const dialogRef = this.dialog.open(SettingsDialogComponent, {
       width: '1000px',

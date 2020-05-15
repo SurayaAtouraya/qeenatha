@@ -1,3 +1,4 @@
+import { RadioComponent } from './routes/radio/radio.component';
 import { SongsComponent } from './routes/songs/songs.component';
 import { SearchComponent } from './routes/search/search.component';
 import { PlaylistComponent } from './routes/playlist/playlist.component';
@@ -13,6 +14,7 @@ import { ArtistComponent } from './routes/artist/artist.component';
 const routes: Routes = [
   { path: '', component: HomeComponent},
   { path: 'search', component: SearchComponent},
+  { path: 'radio', component: RadioComponent},
   { path: 'songs/:id', component: SongsComponent},
   { path: 'library', component: MusicLibraryComponent},
   { path: 'billboards', component: BillboardsComponent},

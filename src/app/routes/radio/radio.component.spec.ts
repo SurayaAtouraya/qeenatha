@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ArtistCardComponent } from './artist-card.component';
+import { RadioComponent } from './radio.component';
 
-describe('ArtistCardComponent', () => {
-  let component: ArtistCardComponent;
-  let fixture: ComponentFixture<ArtistCardComponent>;
+describe('RadioComponent', () => {
+  let component: RadioComponent;
+  let fixture: ComponentFixture<RadioComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ArtistCardComponent ]
+      declarations: [ RadioComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ArtistCardComponent);
+    fixture = TestBed.createComponent(RadioComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

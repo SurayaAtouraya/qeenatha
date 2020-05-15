@@ -1,0 +1,21 @@
+<div class="container">
+
+  <h1> Currently Playing </h1>
+
+  <mat-list>
+    <div *ngFor="let song of newestSongs">
+      <app-song-list-item [songData]="song"></app-song-list-item>
+      <mat-divider></mat-divider>
+    </div>
+  </mat-list>
+
+  <h1> Recently Played </h1>
+
+  <mat-list>
+    <div *ngFor="let song of newestSongs">
+      <app-song-list-item [songData]="song"></app-song-list-item>
+      <mat-divider></mat-divider>
+    </div>
+  </mat-list>
+
+</div>

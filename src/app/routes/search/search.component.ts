@@ -1,7 +1,6 @@
 import { TestDataService } from 'src/app/test-data.service';
 import { Component, OnInit } from '@angular/core';
 import { Song } from 'src/app/components/song/song-list-item/song-list-item.component';
-import { Album } from 'src/app/components/album/album-card/album-card.component';
 import { Artist } from 'src/app/components/artist/artist-list-item/artist-list-item.component';
 
 @Component({
@@ -14,7 +13,7 @@ export class SearchComponent implements OnInit {
   searching: boolean;
 
   searchSongs: Song[];
-  searchAlbums: Album[];
+  searchAlbums: any[];
   searchArtists: Artist[];
 
   constructor(public testDataService: TestDataService) { }

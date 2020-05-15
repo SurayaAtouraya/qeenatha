@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Album } from '../album-card/album-card.component';
 import { Router } from '@angular/router';
+import { Album } from 'src/app/test-data.service';
 
 @Component({
   selector: 'app-album-list-item',

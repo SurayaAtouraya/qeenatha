@@ -17,18 +17,9 @@
 
   <mat-grid-list [cols]="cols" rowHeight="300px" (window:resize)="onResize($event)">
 
-    <mat-grid-tile *ngFor="let album of albums">
-      <app-album-card [albumData]="album"></app-album-card>
+    <mat-grid-tile *ngFor="let album of albumsCardData">
+      <app-card [cardData]="album"></app-card>
     </mat-grid-tile>
   </mat-grid-list>
-
-  <!-- <mat-grid-list cols="4" rowHeight="500px">
-    <mat-grid-tile><app-album-card></app-album-card></mat-grid-tile>
-    <mat-grid-tile><app-album-card></app-album-card></mat-grid-tile>
-    <mat-grid-tile><app-album-card></app-album-card></mat-grid-tile>
-    <mat-grid-tile><app-album-card></app-album-card></mat-grid-tile>
-    <mat-grid-tile><app-album-card></app-album-card></mat-grid-tile>
-    <mat-grid-tile><app-album-card></app-album-card></mat-grid-tile>
-  </mat-grid-list> -->
 
 </div>

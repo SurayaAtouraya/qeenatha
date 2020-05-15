@@ -3,8 +3,8 @@
 <h1 class="title">Latest Albums</h1>
 
 <mat-grid-list [cols]="cols" rowHeight="300px" (window:resize)="windowService.onResize()">
-  <mat-grid-tile *ngFor="let album of newestAlbums">
-    <app-album-card [albumData]="album"></app-album-card>
+  <mat-grid-tile *ngFor="let album of newestAlbumsCardData">
+    <app-card [cardData]="album"></app-card>
   </mat-grid-tile>
 </mat-grid-list>
 
@@ -21,8 +21,8 @@
 <h1 class="title">Artists For You</h1>
 
 <mat-grid-list [cols]="cols" rowHeight="300px" (window:resize)="windowService.onResize()">
-  <mat-grid-tile *ngFor="let artist of newestArtists">
-    <app-artist-card [artistData]="artist"></app-artist-card>
+  <mat-grid-tile *ngFor="let artist of newestArtistsCardData">
+    <app-card [cardData]="artist"></app-card>
   </mat-grid-tile>
 </mat-grid-list>
 

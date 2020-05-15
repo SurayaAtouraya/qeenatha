@@ -24,10 +24,3 @@ export class PlaylistCardComponent implements OnInit {
 
 }
 
-export interface Playlist {
-  playlistName: string;
-  songCount?: number;
-  playlistCover?: string;
-  playlistID?: string;
-}
-
