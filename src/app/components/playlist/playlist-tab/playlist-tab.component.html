@@ -1,7 +1,7 @@
 <mat-grid-list [cols]="cols" rowHeight="300px" > <!--(window:resize)="onResize($event)"-->
 
-  <mat-grid-tile *ngFor="let playlist of playlists">
-    <app-playlist-card [playlist]="playlist"></app-playlist-card>
+  <mat-grid-tile *ngFor="let playlist of playlistsCardData">
+    <app-card [cardData]="playlist"></app-card>
   </mat-grid-tile>
 
 </mat-grid-list>

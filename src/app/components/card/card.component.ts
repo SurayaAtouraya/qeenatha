@@ -20,12 +20,17 @@ export class CardComponent implements OnInit {
     console.log('/' + this.cardData.dataType);
     this.router.navigate(['/' + this.cardData.dataType + '/', this.cardData.dataID]); // ID
   }
+
+  stopDOMTree(event: MouseEvent) {
+    event.preventDefault();
+    event.stopPropagation();
+  }
 }
 
 export interface CardData {
   imgSrc: string;
   title: string;
-  subtitle: string;
+  subtitle?: string;
   dataType: string;
   dataID: string;
 }

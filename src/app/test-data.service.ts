@@ -711,7 +711,7 @@ export class TestDataService {
 
   private playlistData = [
     {
-      playlistCover: null,
+      playlistCover: '../../../../assets/defaultPlaylistLogo.png',
       playlistName: 'Create Playlist',
       songCount: null,
       playlistID: '0'

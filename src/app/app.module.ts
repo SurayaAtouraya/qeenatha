@@ -22,7 +22,6 @@ import { PlaylistDialogComponent } from './components/playlist/playlist-dialog/p
 import { PlaylistMenuComponent } from './components/playlist/playlist-menu/playlist-menu.component';
 import { ArtistHeaderComponent } from './components/artist/artist-header/artist-header.component';
 import { PlaylistTabComponent } from './components/playlist/playlist-tab/playlist-tab.component';
-import { PlaylistCardComponent } from './components/playlist/playlist-card/playlist-card.component';
 import { PlayerToolbarComponent } from './components/player-toolbar/player-toolbar.component';
 import { MobileDisplayComponent } from './components/mobile-display/mobile-display.component';
 import { SongListItemPlayerComponent } from './components/song/song-list-item-player/song-list-item-player.component';
@@ -72,7 +71,6 @@ import { CardComponent } from './components/card/card.component';
     SongListItemArtistComponent,
     MusicLibraryComponent,
     PlaylistTabComponent,
-    PlaylistCardComponent,
     PlayerToolbarComponent,
     MobileDisplayComponent,
     SongListItemPlayerComponent,
@@ -104,7 +102,7 @@ import { CardComponent } from './components/card/card.component';
     MaterialModule,
     BrowserAnimationsModule
   ],
-  exports: [AlbumHeaderComponent, PlaylistCardComponent],
+  exports: [AlbumHeaderComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

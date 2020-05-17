@@ -1,6 +1,7 @@
 import { WindowService } from './../../../window.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { Playlist } from 'src/app/test-data.service';
+import { CardData } from '../../card/card.component';
 
 @Component({
   selector: 'app-playlist-tab',
@@ -14,14 +15,26 @@ export class PlaylistTabComponent implements OnInit {
   constructor(private windowService: WindowService) { }
 
   playlists = [];
+  playlistsCardData = [];
 
   cols: number;
 
 
   ngOnInit(): void {
     this.playlists = this.playlistData;
-
     this.windowService.sideCols.subscribe(cols => this.cols = cols);
+    this.playlists.forEach(playlist => {
+      console.log(playlist);
+      this.playlistsCardData.push(
+        {
+          imgSrc: playlist.playlistCover,
+          title: playlist.playlistName,
+          subtitle: playlist.songCount + ' Songs',
+          dataType: 'playlist',
+          dataID: playlist.playlistName,
+        }
+      )
+    });
   }
 
   // onResize(event) {

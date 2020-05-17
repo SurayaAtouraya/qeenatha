@@ -1,7 +1,60 @@
 <mat-card class="float-shadow" (click)="goToDest()" matRipple style="margin: 0 auto;">
 
   <img mat-card-image [src]="cardData.imgSrc">
+
   <mat-card-content>
+
+    <!-- More Options Button -->
+    <button (click)="stopDOMTree($event)" mat-icon-button class="options-button" [matMenuTriggerFor]="moreOptionsMenu">
+      <i class="material-icons">
+        more_vert
+      </i>
+    </button>
+
+    <mat-menu #moreOptionsMenu="matMenu">
+      <div *ngIf = "cardData.dataType == 'album'">
+        <button mat-menu-item>
+          <mat-icon>play_arrow</mat-icon>
+          Play
+        </button>
+        <button mat-menu-item>
+          <mat-icon>shuffle</mat-icon>
+          Shuffle Play
+        </button>
+        <button mat-menu-item>
+          <mat-icon>library_music</mat-icon>
+          Add Album to My Music
+        </button>
+      </div>
+      <div *ngIf = "cardData.dataType == 'artist'">
+        <button mat-menu-item>
+          <mat-icon>shuffle</mat-icon>
+          Shuffle Play
+        </button>
+        <button mat-menu-item>
+          <mat-icon>subscriptions</mat-icon>
+          Subscribe
+        </button>
+      </div>
+      <div *ngIf = "cardData.dataType == 'playlist'">
+        <button mat-menu-item>
+          <mat-icon>edit</mat-icon>
+          Edit
+        </button>
+        <button mat-menu-item>
+          <mat-icon>delete</mat-icon>
+          Delete
+        </button>
+        <button mat-menu-item>
+          <mat-icon>play_arrow</mat-icon>
+          Play
+        </button>
+        <button mat-menu-item>
+          <mat-icon>shuffle</mat-icon>
+          Shuffle Play
+        </button>
+      </div>
+    </mat-menu>
 
     <div class = "title">
       {{cardData.title}}
