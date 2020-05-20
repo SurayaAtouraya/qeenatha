@@ -1,3 +1,4 @@
+import { SignUpDialogComponent } from './../sign-up-dialog/sign-up-dialog.component';
 import { LogInDialogComponent } from './../log-in-dialog/log-in-dialog.component';
 import { SettingsDialogComponent } from './../settings-dialog/settings-dialog.component';
 import { Component, OnInit } from '@angular/core';
@@ -64,7 +65,11 @@ export class NavbarComponent implements OnInit {
   }
 
   openSignUpDialog() {
-    // TODO
+    const dialogRef = this.dialog.open(SignUpDialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 
   logOut() {

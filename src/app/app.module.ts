@@ -17,10 +17,8 @@ import { SongListItemComponent } from './components/song/song-list-item/song-lis
 import { SongListItemAlbumComponent } from './components/song/song-list-item-album/song-list-item-album.component';
 import { SongListItemArtistComponent } from './components/song/song-list-item-artist/song-list-item-artist.component';
 import { ArtistListItemComponent } from './components/artist/artist-list-item/artist-list-item.component';
-import { AlbumHeaderComponent } from './components/album/album-header/album-header.component';
 import { PlaylistDialogComponent } from './components/playlist/playlist-dialog/playlist-dialog.component';
 import { PlaylistMenuComponent } from './components/playlist/playlist-menu/playlist-menu.component';
-import { ArtistHeaderComponent } from './components/artist/artist-header/artist-header.component';
 import { PlaylistTabComponent } from './components/playlist/playlist-tab/playlist-tab.component';
 import { PlayerToolbarComponent } from './components/player-toolbar/player-toolbar.component';
 import { MobileDisplayComponent } from './components/mobile-display/mobile-display.component';
@@ -47,6 +45,10 @@ import { SongListItemPlaylistComponent } from './components/song/song-list-item-
 import { QueueComponent } from './components/queue/queue.component';
 import { RadioComponent } from './routes/radio/radio.component';
 import { CardComponent } from './components/card/card.component';
+import { SignUpDialogComponent } from './components/sign-up-dialog/sign-up-dialog.component';
+import { HeaderComponent } from './components/header/header.component';
+import { SongListItemQueueComponent } from './components/song/song-list-item-queue/song-list-item-queue.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -62,12 +64,9 @@ import { CardComponent } from './components/card/card.component';
     LogInDialogComponent,
     ArtistComponent,
     AlbumComponent,
-    AlbumHeaderComponent,
     HomeComponent,
-    AlbumHeaderComponent,
     PlaylistDialogComponent,
     PlaylistMenuComponent,
-    ArtistHeaderComponent,
     SongListItemArtistComponent,
     MusicLibraryComponent,
     PlaylistTabComponent,
@@ -95,14 +94,18 @@ import { CardComponent } from './components/card/card.component';
     QueueComponent,
     RadioComponent,
     CardComponent,
+    SignUpDialogComponent,
+    HeaderComponent,
+    SongListItemQueueComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MaterialModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    DragDropModule
   ],
-  exports: [AlbumHeaderComponent],
+  exports: [],
   providers: [],
   bootstrap: [AppComponent]
 })

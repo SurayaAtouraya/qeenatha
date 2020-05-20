@@ -1,3 +1,4 @@
+import { HeaderData } from './../../components/header/header.component';
 import { TestDataService } from 'src/app/test-data.service';
 import { Component, OnInit, HostListener } from '@angular/core';
 import { Song } from 'src/app/components/song/song-list-item/song-list-item.component';
@@ -12,6 +13,7 @@ export class MusicLibraryComponent implements OnInit {
   playlists = [];
   likedSongs = [];
   subscribedArtists = [];
+  savedAlbumsHeaderData: HeaderData;
 
   songCount: number;
   sideCols: number;
@@ -23,6 +25,14 @@ export class MusicLibraryComponent implements OnInit {
   constructor(public testDataService: TestDataService) { }
 
   ngOnInit(): void {
+
+    this.savedAlbumsHeaderData = {
+      imgSrc: 'https://firebasestorage.googleapis.com/v0/b/qeenatha-ceafb.appspot.com/o/dashta.jpg?alt=media&token=ce441a8a-59e0-49a3-b867-4496cab07b39',
+      title: 'Saved Albums',
+      subtitle: 'Find all of your saved albums here!',
+      dataType: 'savedAlbums',
+      dataID: 'savedAlbums',
+    }
 
     this.testDataService.playlists.subscribe(playlists => {
       this.playlists = playlists;

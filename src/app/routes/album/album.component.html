@@ -1,5 +1,6 @@
 <mat-list>
-  <app-album-header [albumData]="albumHeaderData"></app-album-header>
+  <!-- <app-album-header [albumData]="albumHeaderData"></app-album-header> -->
+  <app-header [HeaderData]="headerData"></app-header>
   <div *ngFor="let song of songs">
     <app-song-list-item-album [songData]="song"></app-song-list-item-album>
     <mat-divider></mat-divider>

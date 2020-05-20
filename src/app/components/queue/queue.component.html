@@ -1,4 +1,12 @@
-<mat-card style="background-color: red;">
-  <p>queue works!</p>
-</mat-card>
+<mat-card>
 
+    <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let song of queue" cdkDrag>
+        <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+        <mat-list>
+          <app-song-list-item-queue [songData]="song"></app-song-list-item-queue>
+        </mat-list>
+      </div>
+    </div>
+
+</mat-card>

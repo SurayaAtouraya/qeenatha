@@ -2,6 +2,7 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { Song } from 'src/app/components/song/song-list-item/song-list-item.component';
 import { TestDataService } from 'src/app/test-data.service';
 import { Router } from '@angular/router';
+import { HeaderData } from 'src/app/components/header/header.component';
 
 @Component({
   selector: 'app-artist',
@@ -15,6 +16,7 @@ export class ArtistComponent implements OnInit {
   albums = [];
   albumsCardData = [];
   songs = [];
+  artistHeaderData: HeaderData;
 
   song: Song;
   song2: Song;
@@ -25,6 +27,18 @@ export class ArtistComponent implements OnInit {
   cols: number;
 
   ngOnInit(): void {
+
+    this.artistHeaderData = {
+      imgSrc: 'https://www.qeenatha.com/qartistimg/1024/1024/0/0ec6d94_14photo.jpg',
+      desc: 'Ashur Bet Sargis (Syriac: ܐܫܘܪ ܒܝܬ ܣܪܓܝܤ‎, born 2 July 1949) is an Assyrian singer, composer, guitarist and activist. He became famous in the Assyrian communities worldwide for his nationalistic songs in the 1970s. His career peaked, and became prominent, in the 1990s with five albums released within that decade. His songs usually tend to be sentimental ballads and anthems, although he has made a number of folk dance music as well. To the contrast of his Assyrian peers in music, Ashur\'s music is slow and mellow. He is also known for incorporating Greek musical instruments such as Tambouras to his music.',
+      title: 'Ashur Bet Sargis',
+      subtitle: 'Artist',
+      subtitle2: '5 Albums',
+      dataType: 'artist',
+      dataID: 'Ashur Bet Sargis',
+      chips: ['#1 Artist of All Time'],
+      artistSubscribers: '2.7K'
+    };
 
     // TODO API CALL TO GET LATEST RELEASED ALBUMS (8 NEWEST)
     this.testDataService.newestAlbumCards.subscribe(albums => {

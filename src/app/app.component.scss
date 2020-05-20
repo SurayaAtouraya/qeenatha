@@ -44,3 +44,12 @@ img {
   margin: 0px auto;
   margin-top: 16px;
 }
+
+app-queue {
+  z-index: 1000;
+  position: fixed;
+  top: 64px;
+  width: 100%;
+  // Minus Height of song player and navbar
+  height: calc(100% - 154px);
+}

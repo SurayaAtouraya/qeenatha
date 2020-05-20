@@ -1,0 +1,108 @@
+<mat-card>
+  <mat-card-header>
+
+    <img mat-card-avatar [src]="HeaderData.imgSrc">
+
+    <mat-card-title>
+
+      {{HeaderData.title}}
+
+      <mat-chip-list *ngFor = "let chip of HeaderData.chips">
+        <mat-chip>{{chip}}</mat-chip>
+      </mat-chip-list>
+
+    </mat-card-title>
+
+    <mat-card-subtitle>{{HeaderData.subtitle}}</mat-card-subtitle>
+
+    <mat-card-subtitle>{{HeaderData.subtitle2}}</mat-card-subtitle><!--{{album.albumArtist}} • {{album.albumYear}} • {{album.songCount}} Songs-->
+
+    <mat-card-subtitle>
+      {{HeaderData.desc}}
+    </mat-card-subtitle>
+
+  </mat-card-header>
+
+  <mat-card-content>
+  </mat-card-content>
+
+  <mat-card-actions>
+
+    <!-- Album Actions -->
+    <div *ngIf= "HeaderData.dataType == 'album'">
+
+      <button mat-raised-button>
+        <i class="material-icons">play_arrow</i>
+        PLAY
+      </button>
+
+      <button mat-raised-button>
+        <i class="material-icons">shuffle</i>
+        SHUFFLE PLAY
+      </button>
+
+      <button mat-icon-button [matMenuTriggerFor]="moreOptionsAlbum">
+        <mat-icon>
+          more_vert
+        </mat-icon>
+      </button>
+
+    </div>
+
+    <!-- Artist Actions -->
+    <div *ngIf= "HeaderData.dataType == 'artist'">
+
+      <button mat-raised-button style="color: black;">
+        <i class="material-icons">shuffle</i>
+        SHUFFLE PLAY
+      </button>
+
+      <button [ngClass]="{'subscribed': subscribed, 'unsubscribed': !subscribed}" mat-raised-button (click)="subscribe()">
+        <i class="material-icons">subscriptions</i>
+        {{subscribeText}} <span style="margin-left: 8px;">{{HeaderData.artistSubscribers}}</span>
+      </button>
+
+    </div>
+
+    <!-- Playlist Actions -->
+    <div *ngIf= "HeaderData.dataType == 'playlist'">
+
+      <button mat-raised-button style="color: black;">
+        <i class="material-icons">play_arrow</i>
+        PLAY
+      </button>
+
+      <button mat-raised-button style="color: black;">
+        <i class="material-icons">shuffle</i>
+        SHUFFLE PLAY
+      </button>
+
+    </div>
+
+  </mat-card-actions>
+</mat-card>
+
+
+<!-- Album More Options -->
+<mat-menu #moreOptionsAlbum="matMenu">
+  <button *ngIf="!albumIsSaved" mat-menu-item (click)=saveAlbum()>
+    <mat-icon>library_music</mat-icon>
+    <span>Add Album to My Music</span>
+  </button>
+  <button *ngIf="albumIsSaved" mat-menu-item (click)=deleteAlbum()>
+    <mat-icon>library_music</mat-icon>
+    <span>Remove Album to My Music</span>
+  </button>
+</mat-menu>
+
+<!-- Playlist More Options -->
+<mat-menu #moreOptionsPlaylist="matMenu">
+  <button *ngIf="!albumIsSaved" mat-menu-item (click)=saveAlbum()>
+    <mat-icon>library_music</mat-icon>
+    <span>Add Album to My Music</span>
+  </button>
+  <button *ngIf="albumIsSaved" mat-menu-item (click)=deleteAlbum()>
+    <mat-icon>library_music</mat-icon>
+    <span>Remove Album to My Music</span>
+  </button>
+</mat-menu>

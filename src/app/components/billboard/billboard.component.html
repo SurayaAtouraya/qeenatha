@@ -72,9 +72,10 @@
       <div class="example-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
 
         <!--Content Goes Here For Expanded-->
-        <div class="row-description">
-          {{element.description}}
-          <span class="row-description-attribution"> -- Wikipedia </span>
+        <div class="song-list-item">
+          <mat-list>
+            <app-song-list-item-player [songData]="element"></app-song-list-item-player>
+          </mat-list>
         </div>
 
       </div>

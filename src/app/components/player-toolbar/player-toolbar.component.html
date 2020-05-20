@@ -1,7 +1,3 @@
-<!-- Song Player Queue -->
-<app-queue *ngIf="queueOpen" [@enterAnimation]="queueOpen"></app-queue>
-
-
 <mat-slider min=0 [max]="song.songLengthSeconds" [ngModel]="timeElapsed"
             (input)="test($event.value)" (mousedown)="sliding = true" (window:mouseup)="finish()"></mat-slider>
 
@@ -36,7 +32,7 @@
       </i>
     </button>
     <button mat-icon-button><i class="material-icons">repeat</i></button>
-    <button mat-icon-button (click)="queueOpen = !queueOpen"><i class="material-icons">arrow_drop_up</i></button>
+    <button mat-icon-button (click)="openQueue()"><i class="material-icons">arrow_drop_up</i></button>
   </mat-grid-tile>
 
 </mat-grid-list>

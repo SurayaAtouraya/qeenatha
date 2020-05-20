@@ -2,6 +2,7 @@ import { TestDataService, Album } from 'src/app/test-data.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Song } from 'src/app/components/song/song-list-item/song-list-item.component';
+import { HeaderData } from 'src/app/components/header/header.component';
 
 @Component({
   selector: 'app-album',
@@ -11,6 +12,7 @@ import { Song } from 'src/app/components/song/song-list-item/song-list-item.comp
 export class AlbumComponent implements OnInit {
 
   albumHeaderData: Album;
+  headerData: HeaderData;
   songs = [];
 
   constructor(public testDataService: TestDataService, private router: Router) { }
@@ -29,6 +31,19 @@ export class AlbumComponent implements OnInit {
         }
       });
     });
+
+    this.headerData = {
+      imgSrc: this.albumHeaderData.albumCover,
+      desc: this.albumHeaderData.albumDescription,
+      title: this.albumHeaderData.albumName,
+      subtitle: 'Album',
+      subtitle2: this.albumHeaderData.albumArtist + ' • ' +
+                 this.albumHeaderData.albumYear + ' • ' +
+                 this.albumHeaderData.songCount + ' Songs',
+      dataType: 'album',
+      dataID: this.albumHeaderData.albumName,
+      chips: ['#1 Album of All Time'],
+    };
 
     // TODO PROBABLY WANNA DO THIS ON THE SAME ALBUM CALL
     this.testDataService.albumSongs.subscribe((songs: Song[]) => {
