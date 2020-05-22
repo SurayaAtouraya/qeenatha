@@ -11,9 +11,6 @@ import { Song } from '../song/song-list-item/song-list-item.component';
 
 export class PlayerToolbarComponent implements OnInit {
 
-  // Emit whether to open the queue or no
-  @Output() onOpenQueue: EventEmitter<boolean> = new EventEmitter<boolean>();
-
   song: Song;
   queueOpen: boolean;
 
@@ -28,21 +25,24 @@ export class PlayerToolbarComponent implements OnInit {
   }
 
   sideCols: number;
-  isPlaying: boolean;
   subscription: Subscription;
   audio = new Audio();
   timeElapsed: number;
   sliding: boolean;
   timeElapsedValue: BehaviorSubject<number> = new BehaviorSubject<number>(null);
-
+  queuePos: number;
 
 
   ngOnInit(): void {
 
+    this.globalService.queuePos.subscribe(queuePos => {
+      this.queuePos = queuePos;
+    });
+
     // UI
     this.sideCols = 1;
 
-    this.queueOpen = false;
+    this.globalService.queueOpen.subscribe(queueOpen => this.queueOpen = queueOpen);
 
   }
   test(value) {
@@ -71,11 +71,16 @@ export class PlayerToolbarComponent implements OnInit {
     this.audio.src = this.song.audioSrc;
     this.audio.load();
     this.audio.play();
+    this.globalService.isSongPlaying.next(true);
     this.timeElapsed = 0;
-    this.isPlaying = true;
 
     // Keeps UI Up to date on audio
-    this.subscription = interval(1000).subscribe( () => this.timeElapsed += 1);
+    this.subscription = interval(1000).subscribe( () => {
+      this.timeElapsed += 1;
+      if (this.timeElapsed >= this.audio.duration) {
+        this.playNextSong();
+      }
+    });
 
   }
 
@@ -83,9 +88,11 @@ export class PlayerToolbarComponent implements OnInit {
   togglePlayState() {
     if (this.audio.paused) {
       this.audio.play();
+      this.globalService.isSongPlaying.next(true);
       this.subscription = interval(1000).subscribe( () => this.timeElapsed += 1);
     } else {
       this.audio.pause();
+      this.globalService.isSongPlaying.next(false);
       this.subscription.unsubscribe();
     }
   }
@@ -97,10 +104,12 @@ export class PlayerToolbarComponent implements OnInit {
   rewindSong() {
     this.audio.load();
     this.audio.play();
+    this.globalService.isSongPlaying.next(true);
   }
 
   pauseSong() {
     this.subscription.unsubscribe();
+    this.globalService.isSongPlaying.next(false);
   }
 
   onResize(event) {
@@ -116,7 +125,14 @@ export class PlayerToolbarComponent implements OnInit {
 
   openQueue() {
     this.queueOpen = !this.queueOpen;
-    this.onOpenQueue.emit(this.queueOpen);
+    this.globalService.queueOpen.next(this.queueOpen);
+  }
+
+  playNextSong() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+    this.globalService.queuePos.next(this.queuePos + 1);
   }
 
 }

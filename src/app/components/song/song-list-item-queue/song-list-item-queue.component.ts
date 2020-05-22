@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { PlayerToolbarComponent } from './../../player-toolbar/player-toolbar.component';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TestDataService } from 'src/app/test-data.service';
@@ -16,29 +17,59 @@ export class SongListItemQueueComponent implements OnInit {
               protected globalService: GlobalService) { }
 
     @Input() songData: Song;
+
+    // TODO CHANGE NAME
+    @Input() set songSelected(songSelected: boolean) {
+      if (songSelected) {
+        this.icon = 'volume_up';
+      } else {
+        this.icon = 'play_arrow';
+      }
+    }
+
+    icon: string;
+
     @Output() songPlaying: Song;
+    @Output() removeFromQueueEvent: EventEmitter<Song> = new EventEmitter<Song>();
+    @Output() playNextEvent: EventEmitter<Song> = new EventEmitter<Song>();
+    @Output() addToQueueEvent: EventEmitter<Song> = new EventEmitter<Song>();
+    @Output() callSongPlayerFunction: EventEmitter<string> = new EventEmitter<string>();
+
 
     song: Song;
+    isSongPlaying: boolean;
 
     showPlayButton: boolean;
 
 
   ngOnInit(): void {
 
+    this.globalService.isSongPlaying.subscribe(isSongPlaying => this.isSongPlaying = isSongPlaying);
+
     this.song = this.songData;
 
     this.showPlayButton = false;
   }
 
-  playSong() {
-    this.globalService.SongPlaying.next(this.song);
+  songAction() {
+    if (this.songSelected) {
+      if (this.isSongPlaying) {
+        this.callSongPlayerFunction.next('Pause Song');
+      } else {
+        this.callSongPlayerFunction.next('Play Song');
+      }
+    } else {
+      this.globalService.SongPlaying.next(this.song);
+    }
   }
 
   goToArtist(): void {
+    this.globalService.queueOpen.next(false);
     this.router.navigate(['/artist', this.song.artistID]);
   }
 
   goToAlbum(): void {
+    this.globalService.queueOpen.next(false);
     this.router.navigate(['/album', this.song.albumID]);
   }
 
@@ -81,6 +112,18 @@ export class SongListItemQueueComponent implements OnInit {
     this.snackBar.open(message, action, {
       duration: 2000,
     });
+  }
+
+  removeFromQueue() {
+    this.removeFromQueueEvent.emit(this.song);
+  }
+
+  playNext() {
+    this.playNextEvent.emit(this.song);
+  }
+
+  addToQueue() {
+    this.addToQueueEvent.emit(this.song);
   }
 
 }

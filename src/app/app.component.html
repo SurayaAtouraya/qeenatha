@@ -1,4 +1,4 @@
-<div style="height: 100%;" (window:resize)="windowService.onResize()">
+<div [ngClass]="{'hide-scrollbar': queueOpen}" style="height: 100%;" (window:resize)="windowService.onResize()">
   <mat-drawer-container>
     <mat-drawer mode="side" opened>
       <img src="../../assets/logo.png" height="150" width="150">
@@ -13,5 +13,5 @@
   </mat-drawer-container>
 </div>
 <div *ngIf="songPlaying">
-  <app-player-toolbar [songPlaying]="songPlaying" (onOpenQueue)="toggleQueue($event)" style="z-index: 1; background-color: #fafafa;"></app-player-toolbar>
+  <app-player-toolbar [songPlaying]="songPlaying" style="z-index: 1; background-color: #fafafa;"></app-player-toolbar>
 </div>

@@ -53,3 +53,9 @@ app-queue {
   // Minus Height of song player and navbar
   height: calc(100% - 154px);
 }
+
+.hide-scrollbar {
+  mat-drawer-content {
+    overflow: hidden;
+  }
+}

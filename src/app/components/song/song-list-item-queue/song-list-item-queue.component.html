@@ -3,9 +3,10 @@
   <!-- Album Cover & Play Button Combo -->
   <div matListAvatar class="album-cover-play-button-container">
     <img matListAvatar id="album-cover-image" [src]="song.albumCover">
-    <button (click)="playSong()" mat-icon-button class="play-button">
+    <button (click)="songAction()" mat-icon-button class="play-button"
+    [ngClass] = "{'test': icon === 'play_arrow', 'hoverSongPlaying': isSongPlaying}">
       <i class="material-icons">
-        play_arrow
+        {{this.icon}}
       </i>
     </button>
   </div>
@@ -39,15 +40,15 @@
       <mat-icon>playlist_add</mat-icon>
       <span>Add to Playlist</span>
     </button>
-    <button (click)="goToArtist()" mat-menu-item>
+    <button (click)="playNext()" mat-menu-item>
       <mat-icon>playlist_play</mat-icon>
       <span>Play Next</span>
     </button>
-    <button (click)="goToArtist()" mat-menu-item>
+    <button (click)="addToQueue()" mat-menu-item>
       <mat-icon>queue_music</mat-icon>
       <span>Add to Queue</span>
     </button>
-    <button (click)="goToArtist()" mat-menu-item>
+    <button (click)="removeFromQueue()" mat-menu-item>
       <mat-icon>clear</mat-icon>
       <span>Remove from Queue</span>
     </button>

@@ -694,18 +694,23 @@ export class TestDataService {
   ];
 
   private playlistSongData = [
-    this.songsTestData[0],
-    this.songsTestData[15],
-    this.songsTestData[23],
-    this.songsTestData[24],
-    this.songsTestData[25],
-    this.songsTestData[26],
-    this.songsTestData[29],
-    this.songsTestData[30],
-    this.songsTestData[34],
-    this.songsTestData[35],
-    this.songsTestData[38],
-    this.songsTestData[40]
+    {
+      playlistID: '1',
+      songs: [
+        this.songsTestData[0],
+        this.songsTestData[15],
+        this.songsTestData[23],
+        this.songsTestData[24],
+        this.songsTestData[25],
+        this.songsTestData[26],
+        this.songsTestData[29],
+        this.songsTestData[30],
+        this.songsTestData[34],
+        this.songsTestData[35],
+        this.songsTestData[38],
+        this.songsTestData[40]
+      ]
+    }
   ];
 
 
@@ -717,7 +722,7 @@ export class TestDataService {
       playlistID: '0'
     },
     {
-      playlistCover: '../../../../assets/defaultPlaylistLogo.png',
+      playlistCover: 'https://firebasestorage.googleapis.com/v0/b/qeenatha-ceafb.appspot.com/o/defaultPlaylistLogo.png?alt=media&token=491fd193-a1a2-49dd-8b73-29e88b9f23f6',
       playlistName: 'Best of Ashur Bet Sargis',
       songCount: 12,
       playlistID: '1'
@@ -998,7 +1003,7 @@ export class TestDataService {
   public likedSongs: BehaviorSubject<Song[]> = new BehaviorSubject<Song[]>([]);
   private likedSongsData = [];
   public playlists: BehaviorSubject<Playlist[]> = new BehaviorSubject<Playlist[]>(this.playlistData);
-  public playlistSongs: BehaviorSubject<Song[]> = new BehaviorSubject<Song[]>(this.playlistSongData);
+  public playlistSongs: BehaviorSubject<PlaylistSongs[]> = new BehaviorSubject<PlaylistSongs[]>(this.playlistSongData);
   public subscribedArtists: BehaviorSubject<Artist[]> = new BehaviorSubject<Artist[]>(this.artistTestData);
 
 
@@ -1060,3 +1065,9 @@ export interface Playlist {
   playlistCover?: string;
   playlistID?: string;
 }
+
+export interface PlaylistSongs {
+  songs: Song[];
+  playlistID: string;
+}
+

@@ -33,7 +33,6 @@ import { SongListItemLikedSongComponent } from './components/song/song-list-item
 import { MusicLibraryArtistHeaderComponent } from './components/music-library/music-library-artist-header/music-library-artist-header.component';
 import { BillboardsComponent } from './routes/billboards/billboards.component';
 import { PlaylistComponent } from './routes/playlist/playlist.component';
-import { PlaylistHeaderComponent } from './components/playlist/playlist-header/playlist-header.component';
 import { SearchComponent } from './routes/search/search.component';
 import { SearchBarComponent } from './components/search/search-bar/search-bar.component';
 import { SearchResultsComponent } from './components/search/search-results/search-results.component';
@@ -83,7 +82,6 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     MusicLibraryArtistHeaderComponent,
     BillboardsComponent,
     PlaylistComponent,
-    PlaylistHeaderComponent,
     SearchComponent,
     SearchBarComponent,
     SearchResultsComponent,

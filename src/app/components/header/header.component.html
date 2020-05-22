@@ -1,5 +1,5 @@
 <mat-card>
-  <mat-card-header>
+  <mat-card-header [ngClass]="{'withChips': HeaderData.chips, 'withoutChips': !HeaderData.chips}">
 
     <img mat-card-avatar [src]="HeaderData.imgSrc">
 
@@ -31,12 +31,12 @@
     <!-- Album Actions -->
     <div *ngIf= "HeaderData.dataType == 'album'">
 
-      <button mat-raised-button>
+      <button mat-raised-button (click)="play(false)">
         <i class="material-icons">play_arrow</i>
         PLAY
       </button>
 
-      <button mat-raised-button>
+      <button mat-raised-button (click)="play(true)">
         <i class="material-icons">shuffle</i>
         SHUFFLE PLAY
       </button>
@@ -52,7 +52,7 @@
     <!-- Artist Actions -->
     <div *ngIf= "HeaderData.dataType == 'artist'">
 
-      <button mat-raised-button style="color: black;">
+      <button mat-raised-button style="color: black;" (click)="play(true)">
         <i class="material-icons">shuffle</i>
         SHUFFLE PLAY
       </button>
@@ -67,14 +67,20 @@
     <!-- Playlist Actions -->
     <div *ngIf= "HeaderData.dataType == 'playlist'">
 
-      <button mat-raised-button style="color: black;">
+      <button mat-raised-button style="color: black;" (click)="play(false)">
         <i class="material-icons">play_arrow</i>
         PLAY
       </button>
 
-      <button mat-raised-button style="color: black;">
+      <button mat-raised-button style="color: black;" (click)="play(true)">
         <i class="material-icons">shuffle</i>
         SHUFFLE PLAY
+      </button>
+
+      <button mat-icon-button [matMenuTriggerFor]="moreOptionsPlaylist">
+        <mat-icon>
+          more_vert
+        </mat-icon>
       </button>
 
     </div>

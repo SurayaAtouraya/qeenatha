@@ -23,10 +23,21 @@ mat-card-actions {
   font-weight: bold;
 }
 
-.mat-card-header .mat-card-title {
-  margin-top: -4px;
-  // margin-bottom: 32px;
+// With Chips
+.withChips {
+  .mat-card-title {
+    margin-top: -4px;
+  }
 }
+
+// Without Chips
+.withoutChips {
+  .mat-card-title {
+    margin-top: 3px;
+    margin-bottom: 20px;
+  }
+}
+
 
 mat-chip-list {
   display: inline-block;

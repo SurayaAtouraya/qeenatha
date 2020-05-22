@@ -39,7 +39,6 @@ mat-list-item:hover {
   position: absolute;
   margin-left: -40px;
   color: white;
-  visibility: hidden;
 }
 
 #album-cover-image {
@@ -74,4 +73,12 @@ mat-list-item:hover {
 .song-options-button-selected {
   visibility: visible;
   margin-left: 8px;
+}
+
+.test {
+  visibility: hidden;
+}
+
+.hoverSongPlaying {
+  visibility: hidden;
 }

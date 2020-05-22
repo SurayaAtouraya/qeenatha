@@ -1,10 +1,20 @@
 <mat-card>
 
+    <div class="title">
+      <h3>Queue</h3>
+    </div>
     <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
-      <div class="example-box" *ngFor="let song of queue" cdkDrag>
+      <div class="example-box" *ngFor="let song of queue; let i = index" cdkDrag>
         <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
         <mat-list>
-          <app-song-list-item-queue [songData]="song"></app-song-list-item-queue>
+          <app-song-list-item-queue
+          (addToQueueEvent)="addToQueue($event)"
+          (playNextEvent)="playNext($event)"
+          (removeFromQueueEvent)="removeFromQueue($event)"
+          (callSongPlayerFunction)="callSongPlayerFunction($event)"
+          [songData]="song"
+          [songSelected]="i === queuePos">
+        </app-song-list-item-queue>
         </mat-list>
       </div>
     </div>
