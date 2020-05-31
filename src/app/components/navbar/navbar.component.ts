@@ -18,6 +18,8 @@ export class NavbarComponent implements OnInit {
   // searching: boolean;
   loggedIn: boolean;
 
+  isMobile: boolean;
+
   ngOnInit(): void {
 
     // this.searching = false;
@@ -26,6 +28,8 @@ export class NavbarComponent implements OnInit {
       this.loggedIn = loggedIn;
       console.log(this.loggedIn);
     });
+
+    this.globalService.isMobile.subscribe(isMobile => this.isMobile = isMobile);
 
   }
 

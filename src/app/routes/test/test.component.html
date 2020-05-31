@@ -1,0 +1,6 @@
+<mat-list>
+  <div *ngFor="let song of newestSongs">
+    <app-song-list-item [songData]="song"></app-song-list-item>
+    <mat-divider></mat-divider>
+  </div>
+</mat-list>

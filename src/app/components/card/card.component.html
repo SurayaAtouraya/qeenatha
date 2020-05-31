@@ -13,11 +13,11 @@
 
     <mat-menu #moreOptionsMenu="matMenu">
       <div *ngIf = "cardData.dataType == 'album'">
-        <button mat-menu-item (click)="playAlbum()">
+        <button mat-menu-item (click)="play(false)">
           <mat-icon>play_arrow</mat-icon>
           Play
         </button>
-        <button mat-menu-item>
+        <button mat-menu-item (click)="play(true)">
           <mat-icon>shuffle</mat-icon>
           Shuffle Play
         </button>
@@ -37,11 +37,11 @@
         </button>
       </div>
       <div *ngIf = "cardData.dataType == 'playlist'">
-        <button mat-menu-item (click)="playPlaylist(false)">
+        <button mat-menu-item (click)="play(false)">
           <mat-icon>play_arrow</mat-icon>
           Play
         </button>
-        <button mat-menu-item (click)="playPlaylist(true)">
+        <button mat-menu-item (click)="play(true)">
           <mat-icon>shuffle</mat-icon>
           Shuffle Play
         </button>

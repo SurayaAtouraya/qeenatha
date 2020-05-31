@@ -1012,6 +1012,9 @@ export class TestDataService {
   public newestAlbumCards: BehaviorSubject<Album[]> = new BehaviorSubject<Album[]>(this.albumCardsTestData);
   public newestArtists: BehaviorSubject<Artist[]> = new BehaviorSubject<Artist[]>(this.artistTestData);
 
+  public playlistIDCount: BehaviorSubject<number> = new BehaviorSubject<number>(1);
+
+
 
   public billboardSongs: BehaviorSubject<Song[]> = new BehaviorSubject<Song[]>(this.billboardData);
   constructor() {}

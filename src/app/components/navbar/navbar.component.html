@@ -1,8 +1,17 @@
 <mat-toolbar color="primary">
-  <mat-toolbar-row>
+  <mat-toolbar-row *ngIf="!isMobile">
 
-    <button (click)="goToBillboardScreen()" mat-button>Billboard Charts</button>
-    <button (click)="goToRadioScreen()" mat-button>Qeenatha Radio</button>
+    <!-- <button (click)="goToBillboardScreen()" mat-button>Billboard Charts</button>
+    <button (click)="goToRadioScreen()" mat-button>Qeenatha Radio</button> -->
+    <button mat-raised-button color="primary" class="full-button" (click)="goToBillboardScreen()">
+      <mat-icon class="button-icon">table_chart</mat-icon>
+      <span>Billboard Charts</span>
+    </button>
+
+    <button mat-raised-button color="primary" class="full-button" (click)="goToRadioScreen()">
+      <mat-icon class="button-icon">radio</mat-icon>
+      <span>Qeenatha Radio</span>
+    </button>
 
     <span class="spacer"></span>
 
@@ -17,6 +26,42 @@
             mat-icon-button class="material-icons" [matMenuTriggerFor]="menu">
       <mat-icon>account_circle</mat-icon>
     </button>
+
+  </mat-toolbar-row>
+
+    <mat-toolbar-row class="mobile-buttons-container" *ngIf="isMobile">
+
+      <span>Qeenatha</span>
+      <span class="spacer"></span>
+      <button mat-icon-button [matMenuTriggerFor]="appMenu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+
+      <!-- <button mat-raised-button color="primary" class="full-button" (click)="goToBillboardScreen()">
+        <mat-icon class="button-icon">home</mat-icon>
+        <span>Home</span>
+      </button>
+      <button mat-raised-button color="primary" class="full-button" (click)="goToBillboardScreen()">
+        <mat-icon class="button-icon">search</mat-icon>
+        <span>Search</span>
+      </button>
+      <button mat-raised-button color="primary" class="full-button" (click)="goToBillboardScreen()">
+        <mat-icon class="button-icon">library_music</mat-icon>
+        <span>My Music</span>
+      </button>
+      <button mat-raised-button color="primary" class="full-button" (click)="goToBillboardScreen()">
+        <mat-icon class="button-icon">radio</mat-icon>
+        <span>Qeenatha Radio</span>
+      </button>
+      <button mat-raised-button color="primary" class="full-button" (click)="goToBillboardScreen()">
+        <mat-icon class="button-icon">table_chart</mat-icon>
+        <span>Billboard Charts</span>
+      </button>
+      <button mat-raised-button color="primary" class="full-button" (click)="goToBillboardScreen()">
+        <mat-icon class="button-icon">account_circle</mat-icon>
+        <span>My Account</span>
+      </button> -->
+  </mat-toolbar-row>
 
     <!-- Profile Menu -->
     <mat-menu #menu="matMenu">
@@ -34,9 +79,29 @@
       </button>
     </mat-menu>
 
-
-
-
-
-
-  </mat-toolbar-row>
+    <mat-menu #appMenu="matMenu">
+      <button mat-menu-item>
+        <mat-icon>home</mat-icon>
+        <span>Home</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>search</mat-icon>
+        <span>Search</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>library_music</mat-icon>
+        <span>My Music</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>radio</mat-icon>
+        <span>Qeenatha Radio</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>table_chart</mat-icon>
+        <span>Billboard Charts</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>account_circle</mat-icon>
+        <span>My Account</span>
+      </button>
+    </mat-menu>

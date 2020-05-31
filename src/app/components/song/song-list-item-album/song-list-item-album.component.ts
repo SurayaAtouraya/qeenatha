@@ -12,8 +12,8 @@ export class SongListItemAlbumComponent extends SongListItemComponent implements
     super.ngOnInit();
   }
 
-  playSong() {
-    this.globalService.SongPlaying.next(this.song);
-  }
+  // playSong() {
+  //   this.globalService.SongPlaying.next(this.song);
+  // }
 
 }

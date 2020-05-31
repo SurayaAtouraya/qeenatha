@@ -11,7 +11,7 @@
           (addToQueueEvent)="addToQueue($event)"
           (playNextEvent)="playNext($event)"
           (removeFromQueueEvent)="removeFromQueue($event)"
-          (callSongPlayerFunction)="callSongPlayerFunction($event)"
+
           [songData]="song"
           [songSelected]="i === queuePos">
         </app-song-list-item-queue>
@@ -20,3 +20,4 @@
     </div>
 
 </mat-card>
+<!-- (callSongPlayerFunction)="callSongPlayerFunction($event)" -->

@@ -18,8 +18,8 @@
     Create Playlist
   </button>
   <mat-divider></mat-divider>
-  <div class="playlist-container" *ngFor="let playlist of playlists">
-    <button (click)="goToPlaylist(playlist.playlistID)" mat-list-item> {{playlist.playlistName}} </button>
+  <div class="playlist-container">
+    <button *ngFor="let playlist of playlists" (click)="goToPlaylist(playlist.playlistID)" mat-list-item> {{playlist.playlistName}} </button>
   </div>
 
 </mat-action-list>

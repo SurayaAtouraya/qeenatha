@@ -1,38 +1,41 @@
-<mat-slider min=0 [max]="song.songLengthSeconds" [ngModel]="timeElapsed"
-            (input)="test($event.value)" (mousedown)="sliding = true" (window:mouseup)="finish()"></mat-slider>
+<mat-card>
+  <mat-slider min=0 [max]="song.songLengthSeconds" [ngModel]="timeElapsed"
+              (input)="test($event.value)" (mousedown)="sliding = true" (window:mouseup)="finishSliding()">
+  </mat-slider>
 
-<mat-grid-list cols="12" rowHeight="70px" (window:resize)="onResize($event)">
+  <mat-grid-list cols="12" rowHeight="70px" (window:resize)="onResize($event)">
 
-  <mat-grid-tile [colspan]="sideCols">
-    <button (click)=rewindSong() disableRipple style="border-radius: 0;" mat-icon-button>
-      <i class="material-icons">
-        skip_previous
-      </i>
-    </button>
-    <button (click)="togglePlayState()" disableRipple mat-icon-button class="play-button">
-      <i class="material-icons" style="font-size: 42px;">
-        <span *ngIf="!audio.paused">pause</span>
-        <span *ngIf="audio.paused">play_arrow</span>
-      </i>
-    </button>
-    <button disableRipple style="border-radius: 0;" mat-icon-button><i class="material-icons">skip_next</i></button>
-  </mat-grid-tile>
+    <mat-grid-tile [colspan]="sideCols">
+      <button (click)=rewindSong() disableRipple style="border-radius: 0;" mat-icon-button>
+        <i class="material-icons">
+          skip_previous
+        </i>
+      </button>
+      <button (click)="togglePlayState()" disableRipple mat-icon-button class="play-button">
+        <i class="material-icons" style="font-size: 42px;">
+          <span *ngIf="!audio.paused">pause</span>
+          <span *ngIf="audio.paused">play_arrow</span>
+        </i>
+      </button>
+      <button disableRipple style="border-radius: 0;" mat-icon-button><i class="material-icons">skip_next</i></button>
+    </mat-grid-tile>
 
-  <mat-grid-tile [colspan]="12 - (2 * sideCols)">
-    <mat-list>
-      <app-song-list-item-player [songData]="song"></app-song-list-item-player>
-    </mat-list>
-  </mat-grid-tile>
+    <mat-grid-tile [colspan]="12 - (2 * sideCols)">
+      <mat-list>
+        <app-song-list-item-player [songData]="song"></app-song-list-item-player>
+      </mat-list>
+    </mat-grid-tile>
 
-  <mat-grid-tile [colspan]="sideCols">
-    <button (click)="toggleAudio()" mat-icon-button>
-      <i class="material-icons">
-        <span *ngIf="audio.muted">volume_off</span>
-        <span *ngIf="!audio.muted">volume_up</span>
-      </i>
-    </button>
-    <button mat-icon-button><i class="material-icons">repeat</i></button>
-    <button mat-icon-button (click)="openQueue()"><i class="material-icons">arrow_drop_up</i></button>
-  </mat-grid-tile>
+    <mat-grid-tile [colspan]="sideCols">
+      <button (click)="toggleAudio()" mat-icon-button>
+        <i class="material-icons">
+          <span *ngIf="audio.muted">volume_off</span>
+          <span *ngIf="!audio.muted">volume_up</span>
+        </i>
+      </button>
+      <button mat-icon-button><i class="material-icons">repeat</i></button>
+      <button mat-icon-button (click)="openQueue()"><i class="material-icons">arrow_drop_up</i></button>
+    </mat-grid-tile>
 
-</mat-grid-list>
+  </mat-grid-list>
+</mat-card>

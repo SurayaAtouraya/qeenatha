@@ -2,7 +2,7 @@ import { PlayerToolbarComponent } from './../../player-toolbar/player-toolbar.co
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { TestDataService } from 'src/app/test-data.service';
+import { TestDataService, Playlist } from 'src/app/test-data.service';
 import { GlobalService } from 'src/app/global.service';
 import { Song } from '../song-list-item/song-list-item.component';
 
@@ -20,6 +20,7 @@ export class SongListItemQueueComponent implements OnInit {
 
     // TODO CHANGE NAME
     @Input() set songSelected(songSelected: boolean) {
+      this.isSelectedSong = songSelected;
       if (songSelected) {
         this.icon = 'volume_up';
       } else {
@@ -33,18 +34,33 @@ export class SongListItemQueueComponent implements OnInit {
     @Output() removeFromQueueEvent: EventEmitter<Song> = new EventEmitter<Song>();
     @Output() playNextEvent: EventEmitter<Song> = new EventEmitter<Song>();
     @Output() addToQueueEvent: EventEmitter<Song> = new EventEmitter<Song>();
-    @Output() callSongPlayerFunction: EventEmitter<string> = new EventEmitter<string>();
-
 
     song: Song;
+
     isSongPlaying: boolean;
+    isSelectedSong: boolean;
 
     showPlayButton: boolean;
+
+    playlists: Playlist[] = [];
+
 
 
   ngOnInit(): void {
 
-    this.globalService.isSongPlaying.subscribe(isSongPlaying => this.isSongPlaying = isSongPlaying);
+    this.testDataService.playlists.subscribe(playlists => {
+      this.playlists = playlists;
+    });
+
+
+    this.globalService.isSongPlaying.subscribe(isSongPlaying => {
+      this.isSongPlaying = isSongPlaying;
+      if (isSongPlaying && this.isSelectedSong) {
+        this.icon = 'volume_up';
+      } else if (!isSongPlaying && this.isSelectedSong) {
+        this.icon = 'play_arrow';
+      }
+    });
 
     this.song = this.songData;
 
@@ -52,13 +68,10 @@ export class SongListItemQueueComponent implements OnInit {
   }
 
   songAction() {
-    if (this.songSelected) {
-      if (this.isSongPlaying) {
-        this.callSongPlayerFunction.next('Pause Song');
-      } else {
-        this.callSongPlayerFunction.next('Play Song');
-      }
+    if (this.isSelectedSong) {
+        this.globalService.togglePlayState.next();
     } else {
+      // TODO FIX QUEUEPOS STATE
       this.globalService.SongPlaying.next(this.song);
     }
   }
@@ -124,6 +137,22 @@ export class SongListItemQueueComponent implements OnInit {
 
   addToQueue() {
     this.addToQueueEvent.emit(this.song);
+  }
+
+  hoverButton() {
+    if (this.isSelectedSong && this.isSongPlaying) {
+      this.icon = 'pause';
+    }
+  }
+
+  leaveButton() {
+    if (this.isSelectedSong && this.isSongPlaying) {
+      this.icon = 'volume_up';
+    }
+  }
+
+  addToPlaylist() {
+
   }
 
 }

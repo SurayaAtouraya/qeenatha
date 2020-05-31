@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, ReplaySubject } from 'rxjs';
 import { Song } from './components/song/song-list-item/song-list-item.component';
 
 @Injectable({
@@ -13,8 +13,12 @@ export class GlobalService {
   public isSongPlaying: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   public queue: BehaviorSubject<Song[]> = new BehaviorSubject<Song[]>(null);
   public queueOpen: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+
+  // Position in queue of song currently playing.
   public queuePos: BehaviorSubject<number> = new BehaviorSubject<number>(0);
-  // public callPlayerFunction: BehaviorSubject<string> = new BehaviorSubject<string>(null);
+
+  // Components communicating with Song Player component.
+  public togglePlayState: ReplaySubject<null> = new ReplaySubject<null>();
 
   constructor() { }
 

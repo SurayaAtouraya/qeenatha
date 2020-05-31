@@ -1,3 +1,35 @@
+// Portrait Phones
+@media (max-width: 575.98px) {
+
+  // Hide Like/Dislike buttons
+  .song-options-button:not(:last-of-type) {
+    display: none !important;
+  }
+
+  mat-list-item:hover .song-options-button:last-of-type {
+    display: block !important;
+  }
+
+}
+
+// Landscape Phones
+@media (min-width: 576px) and (max-width: 767.98px) {
+}
+
+// Tablets
+@media (min-width: 768px) and (max-width: 991.98px) {
+}
+
+// Desktops
+@media (min-width: 992px) and (max-width: 1279.98px) {
+
+}
+
+// Large Desktops
+@media (min-width: 1280px) {
+
+}
+
 #song-number {
   color: gray;
   padding-left: 16px;
@@ -11,7 +43,6 @@ mat-list-item:hover {
 }
 
 .song-options-button {
-  visibility: hidden;
   margin-left: 8px;
 }
 
@@ -28,3 +59,12 @@ mat-list-item:hover {
 #song-name {
   font-weight: bold;
 }
+
+[hidden] {
+  display: none !important;
+}
+
+.hideDesktop {
+  visibility: hidden;
+}
+

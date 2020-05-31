@@ -11,11 +11,21 @@ import { Song } from '../song/song-list-item/song-list-item.component';
 
 export class PlayerToolbarComponent implements OnInit {
 
+  // The Song currently playing.
   song: Song;
+
+  // Status of queue open or closed.
   queueOpen: boolean;
+
+  // Queue position of song playing.
+  queuePos: number;
 
   constructor(public globalService: GlobalService) { }
 
+  // Song passed for playing by app component.
+  // Set as current song.
+  // Unsubscibe from old song (if exists).
+  // Initialize and play the song.
   @Input() set songPlaying(song: Song) {
     this.song = song;
     if (this.subscription) {
@@ -24,16 +34,25 @@ export class PlayerToolbarComponent implements OnInit {
     this.initSong();
   }
 
+  // Request the next song in the queue to play.
+  @Output() getNextSong: EventEmitter<number> = new EventEmitter<number>();
+
   sideCols: number;
   subscription: Subscription;
   audio = new Audio();
   timeElapsed: number;
   sliding: boolean;
   timeElapsedValue: BehaviorSubject<number> = new BehaviorSubject<number>(null);
-  queuePos: number;
+
 
 
   ngOnInit(): void {
+
+    // Listen for calls to Song Player functions
+    this.globalService.togglePlayState.subscribe(() => {
+      this.togglePlayState();
+    });
+
 
     this.globalService.queuePos.subscribe(queuePos => {
       this.queuePos = queuePos;
@@ -50,10 +69,9 @@ export class PlayerToolbarComponent implements OnInit {
     this.timeElapsedValue.next(value);
   }
 
-  finish() {
+  finishSliding() {
     if (this.sliding === true) {
       this.sliding = false;
-      console.log('DONE!');
       this.timeElapsedValue.subscribe(time => {
         this.timeElapsed = time;
         this.audio.currentTime = time;
@@ -107,11 +125,6 @@ export class PlayerToolbarComponent implements OnInit {
     this.globalService.isSongPlaying.next(true);
   }
 
-  pauseSong() {
-    this.subscription.unsubscribe();
-    this.globalService.isSongPlaying.next(false);
-  }
-
   onResize(event) {
     if (event.target.innerWidth >= 1600 && event.target.innerWidth > 1300) {
       this.sideCols = 1;
@@ -128,11 +141,14 @@ export class PlayerToolbarComponent implements OnInit {
     this.globalService.queueOpen.next(this.queueOpen);
   }
 
+  // Called when the current song playing finishes.
   playNextSong() {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
-    this.globalService.queuePos.next(this.queuePos + 1);
+    this.queuePos += 1;
+    this.globalService.queuePos.next(this.queuePos);
+    this.getNextSong.emit();
   }
 
 }

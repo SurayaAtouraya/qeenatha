@@ -18,7 +18,6 @@ import { SongListItemAlbumComponent } from './components/song/song-list-item-alb
 import { SongListItemArtistComponent } from './components/song/song-list-item-artist/song-list-item-artist.component';
 import { ArtistListItemComponent } from './components/artist/artist-list-item/artist-list-item.component';
 import { PlaylistDialogComponent } from './components/playlist/playlist-dialog/playlist-dialog.component';
-import { PlaylistMenuComponent } from './components/playlist/playlist-menu/playlist-menu.component';
 import { PlaylistTabComponent } from './components/playlist/playlist-tab/playlist-tab.component';
 import { PlayerToolbarComponent } from './components/player-toolbar/player-toolbar.component';
 import { MobileDisplayComponent } from './components/mobile-display/mobile-display.component';
@@ -48,6 +47,8 @@ import { SignUpDialogComponent } from './components/sign-up-dialog/sign-up-dialo
 import { HeaderComponent } from './components/header/header.component';
 import { SongListItemQueueComponent } from './components/song/song-list-item-queue/song-list-item-queue.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { PlaylistAddComponent } from './components/playlist/playlist-add/playlist-add.component';
+import { TestComponent } from './routes/test/test.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,6 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     AlbumComponent,
     HomeComponent,
     PlaylistDialogComponent,
-    PlaylistMenuComponent,
     SongListItemArtistComponent,
     MusicLibraryComponent,
     PlaylistTabComponent,
@@ -95,6 +95,8 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     SignUpDialogComponent,
     HeaderComponent,
     SongListItemQueueComponent,
+    PlaylistAddComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,

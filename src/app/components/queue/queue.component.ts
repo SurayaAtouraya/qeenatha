@@ -25,7 +25,6 @@ export class QueueComponent implements OnInit {
     // Need boundary check TODO
     this.globalService.queuePos.subscribe(queuePos => {
       this.queuePos = queuePos;
-      this.globalService.SongPlaying.next(this.queue[queuePos]);
     });
   }
 
@@ -36,18 +35,40 @@ export class QueueComponent implements OnInit {
   removeFromQueue(song: Song) {
     const i = this.queue.indexOf(song);
     this.queue.splice(i, 1);
+    if (this.queuePos > i) {
+      this.globalService.queuePos.next(this.queuePos - 1);
+    } else if (this.queuePos === i) {
+      if (i === this.queue.length) {
+        this.globalService.queuePos.next(this.queuePos - 1);
+      }
+      this.playSong();
+    }
   }
 
   playNext(song: Song) {
     this.queue.splice(1, 0, song);
+    if (this.queuePos > 0) {
+      this.globalService.queuePos.next(this.queuePos + 1);
+    }
   }
 
   drop(event: CdkDragDrop<Song[]>) {
     moveItemInArray(this.queue, event.previousIndex, event.currentIndex);
+    if (this.queuePos === event.previousIndex) {
+      this.globalService.queuePos.next(event.currentIndex);
+    }
+    // Current song overtaken
+    else if (this.queuePos <= event.currentIndex && this.queuePos > event.previousIndex) {
+      this.globalService.queuePos.next(this.queuePos - 1);
+    }
+    // Current song moves up
+    else if (this.queuePos < event.previousIndex && this.queuePos >= event.currentIndex) {
+      this.globalService.queuePos.next(this.queuePos + 1);
+    }
   }
 
-  callSongPlayerFunction(functionName: string) {
-
+  playSong() {
+    this.globalService.SongPlaying.next(this.queue[this.queuePos]);
   }
 
 }

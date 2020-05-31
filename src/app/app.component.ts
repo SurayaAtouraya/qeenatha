@@ -1,5 +1,6 @@
+import { QueueComponent } from './components/queue/queue.component';
 import { WindowService } from './window.service';
-import { Component, OnInit, Injectable } from '@angular/core';
+import { Component, OnInit, Injectable, ViewChild } from '@angular/core';
 import { GlobalService } from './global.service';
 import { Song } from './components/song/song-list-item/song-list-item.component';
 import { trigger, transition, style, animate } from '@angular/animations';
@@ -26,6 +27,8 @@ import { trigger, transition, style, animate } from '@angular/animations';
 })
 export class AppComponent implements OnInit {
 
+  @ViewChild(QueueComponent) queueComponent: QueueComponent;
+
   title = 'Qeenatha';
   isMobile: boolean;
   songPlaying: Song;
@@ -44,6 +47,10 @@ export class AppComponent implements OnInit {
     this.globalService.isMobile.subscribe(isMobile => {
       this.isMobile = isMobile;
     });
+  }
+
+  getNextSongEvent() {
+    this.queueComponent.playSong();
   }
 
 }

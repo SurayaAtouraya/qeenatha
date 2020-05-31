@@ -4,7 +4,9 @@
   <div matListAvatar class="album-cover-play-button-container">
     <img matListAvatar id="album-cover-image" [src]="song.albumCover">
     <button (click)="songAction()" mat-icon-button class="play-button"
-    [ngClass] = "{'test': icon === 'play_arrow', 'hoverSongPlaying': isSongPlaying}">
+    [ngClass] = "{'song-paused': !isSongPlaying && isSelectedSong,
+                  'song-playing': isSongPlaying && isSelectedSong }"
+    (mouseenter) ="hoverButton() "  (mouseleave) ="leaveButton()">
       <i class="material-icons">
         {{this.icon}}
       </i>
@@ -19,6 +21,7 @@
     <span class="song-meta-info">{{song.artistName}}</span>
   </p>
 
+  <!-- Song Actions -->
   <button (click)="dislikeSong()" class="song-options-button" mat-icon-button
           [ngClass]="{'song-options-button-selected': this.song.songDisliked}">
     <i [ngClass] = "{'material-icons'         :  this.song.songDisliked,
@@ -33,10 +36,11 @@
     <i class="material-icons-outlined">more_vert</i>
   </button>
 
+  <!-- Song Length -->
   <span style="margin-left:8px" class="song-meta-info">{{song.songLength}}</span>
 
   <mat-menu #moreOptions="matMenu">
-    <button mat-menu-item>
+    <button (click)="addToPlaylist()" mat-menu-item>
       <mat-icon>playlist_add</mat-icon>
       <span>Add to Playlist</span>
     </button>

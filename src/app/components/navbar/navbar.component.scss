@@ -18,3 +18,18 @@ mat-toolbar {
   top: 0;
   z-index: 1000;
 }
+
+.mobile-button {
+  border-radius: 0;
+  margin: 0 8px;
+}
+
+.button-icon {
+  margin-bottom: 8px;
+  margin-right: 8px;
+}
+
+.full-button {
+  margin: 0 8px;
+  padding: 4px 16px;
+}

@@ -1,29 +1,83 @@
+// Portrait Phones
+@media (max-width: 575.98px) {
+
+  // Hide Like/Dislike buttons
+  .song-options-button:not(:last-of-type) {
+    display: none !important;
+  }
+
+  mat-list-item:hover .song-options-button:last-of-type {
+    display: block !important;
+  }
+
+}
+
+// Landscape Phones
+@media (min-width: 576px) and (max-width: 767.98px) {
+}
+
+// Tablets
+@media (min-width: 768px) and (max-width: 991.98px) {
+}
+
+// Desktops
+@media (min-width: 992px) and (max-width: 1279.98px) {
+
+}
+
+// Large Desktops
+@media (min-width: 1280px) {
+
+}
+
+// The Song Item
 #song-list-item {
   height: 72px;
 }
 
+//**********************************************************************************************************************
+// Song Meta Info (Artist Name, Album Name, Song Length)
+
+// Artist name, album, song length etc.
 .song-meta-info {
   color: gray;
 }
 
+// Hover over meta info change pointer
+.song-meta-info-selectable {
+  cursor: pointer;
+}
+
+// Underline meta info on hover
+.song-meta-info-selectable:hover {
+  text-decoration: underline;
+}
+
+//**********************************************************************************************************************
+// Song Actions
+
+// Color action buttons
 .material-icons-outlined {
   color: gray;
   opacity: 0.8;
-  // margin-right: 16px;
 }
 
+// Make buttons visible when hovered over (Non-Mobile)
 mat-list-item:hover {
   .song-options-button {
     visibility: visible;
   }
 }
 
-.song-meta-info-selectable {
-  cursor: pointer;
+// Like, disklike and more options
+.song-options-button {
+  margin-left: 8px;
 }
 
-.song-meta-info-selectable:hover {
-  text-decoration: underline;
+// Like and disklike when selected.
+.song-options-button-selected {
+  visibility: visible;
+  margin-left: 8px;
 }
 
 //**********************************************************************************************************************
@@ -49,9 +103,8 @@ mat-list-item:hover {
   border-radius: 7px;
 }
 
-// On hovering the item, the play button appears and dims the image
-.mat-list-item:hover {
-
+// On hovering the mat-list-item, the play button appears and dims the image
+.song-item-desktop:hover {
   #album-cover-image {
     filter: brightness(60%);
   }
@@ -67,12 +120,10 @@ mat-list-item:hover {
   font-weight: bold;
 }
 
-.song-options-button {
-  visibility: hidden;
-  margin-left: 8px;
+[hidden] {
+  display: none !important;
 }
 
-.song-options-button-selected {
-  visibility: visible;
-  margin-left: 8px;
+.hideDesktop {
+  visibility: hidden;
 }

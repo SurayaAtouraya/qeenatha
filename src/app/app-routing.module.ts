@@ -1,3 +1,4 @@
+import { TestComponent } from './routes/test/test.component';
 import { RadioComponent } from './routes/radio/radio.component';
 import { SongsComponent } from './routes/songs/songs.component';
 import { SearchComponent } from './routes/search/search.component';
@@ -20,7 +21,8 @@ const routes: Routes = [
   { path: 'billboards', component: BillboardsComponent},
   { path: 'artist/:id', component: ArtistComponent},
   { path: 'album/:id', component: AlbumComponent},
-  { path: 'playlist/:id', component: PlaylistComponent}
+  { path: 'playlist/:id', component: PlaylistComponent},
+  { path: 'test', component: TestComponent}
 ];
 
 @NgModule({

@@ -83,7 +83,6 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-    // Album ************************************************************************************
     play(shuffle: boolean) {
 
       let songs = [];

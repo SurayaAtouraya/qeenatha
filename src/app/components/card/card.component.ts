@@ -2,7 +2,6 @@ import { GlobalService } from 'src/app/global.service';
 import { TestDataService } from 'src/app/test-data.service';
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { Song } from '../song/song-list-item/song-list-item.component';
 import { HelperFunctionsService } from 'src/app/helper-functions.service';
 
 @Component({
@@ -31,68 +30,47 @@ export class CardComponent implements OnInit {
     event.stopPropagation();
   }
 
-  // Album ************************************************************************************
-  playAlbum() {
-
-    let albumSongs = [];
-
-    // Get Album Songs from id
-    this.testDataService.albumSongs.subscribe(songs => {
-      songs.forEach(song => {
-        if (song.albumID === this.cardData.dataID) {
-          albumSongs.push(song);
-        }
-      });
-    });
-
-    console.log(albumSongs);
-
-    // pass to queue var in global, will activate queue and change its local storage
-
-    this.globalService.queue.next(albumSongs);
-
-    // set songPlaying to first song in album in globalserv
-
-    this.globalService.SongPlaying.next(albumSongs[0]);
-
-    // done
-  }
-  // ******************************************************************************************
-
-  // Playlist ************************************************************************************
-  playPlaylist(shuffle: boolean) {
+  play(shuffle: boolean) {
 
     let songs = [];
 
-    // Get Playlist Songs from id
-    this.testDataService.playlistSongs.subscribe(playlistSongs => {
-      playlistSongs.forEach(playlist => {
-        console.log(playlist.playlistID);
-        console.log(this.cardData.dataID);
-        if (playlist.playlistID === this.cardData.dataID) {
-          songs = playlist.songs;
-        }
+    // Get Album Songs from id
+    if (this.cardData.dataType === 'album') {
+      this.testDataService.albumSongs.subscribe(albumSongs => {
+        albumSongs.forEach(albumSong => {
+          if (albumSong.albumID === this.cardData.dataID) {
+            songs.push(albumSong);
+          }
+        });
       });
-    });
+    } else if (this.cardData.dataType === 'artist') {
 
-    console.log('era');
-    console.log(songs);
+    } else if (this.cardData.dataType === 'playlist') {
+      alert('yallah');
+      this.testDataService.playlistSongs.subscribe(playlistSongs => {
+        playlistSongs.forEach(playlist => {
+          if (playlist.playlistID === this.cardData.dataID) {
+            songs = playlist.songs;
+          }
+        });
+      });
+    }
 
-    // pass to queue var in global, will activate queue and change its local storage
 
     if (shuffle) {
       songs = this.helperFunctions.shuffle(songs);
     }
 
+    // pass to queue var in global, will activate queue and change its local storage
+
     this.globalService.queue.next(songs);
 
-    // set songPlaying to first song in album in globalserv
+    // set songPlaying to first song in list in globalserv
 
     this.globalService.SongPlaying.next(songs[0]);
 
     // done
   }
-  // ******************************************************************************************
 
 }
 
