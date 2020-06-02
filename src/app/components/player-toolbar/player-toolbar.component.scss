@@ -1,7 +1,12 @@
+mat-card {
+  width: 100%;
+  padding: 0;
+}
+
 .play-button {
   border-radius: 0;
   height: 50px;
-  width: 50px;
+  width: 40px;
 }
 
 mat-slider {
@@ -44,7 +49,7 @@ mat-slider:active {
   // }
 // }
 
-::ng-deep .mat-slider-horizontal .mat-slider-wrapper {
+ .mat-slider-horizontal .mat-slider-wrapper {
   top: 8px !important;
   right: -16px !important;
 }
@@ -54,16 +59,26 @@ mat-slider:active {
 }
 
 mat-list {
+  position: absolute;
+  left: 0;
   padding: 0px;
   // padding-bottom: 4px;
 }
 
-mat-card {
-  // padding: 0;
-  // padding-bottom: 32px;
-  padding: 0 16px;
+.player-song-list ::ng-deep.mat-list-item-content {
+  padding: 0 !important;
 }
 
 ::ng-deep.mat-slider-thumb:hover {
   scale: 1 !important;
+}
+
+.arrow-icon {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.song-item-tile {
+  display: flex;
+  overflow-x: auto;
 }

@@ -1,5 +1,5 @@
 import { QueueComponent } from './components/queue/queue.component';
-import { WindowService } from './window.service';
+import { WindowService, Grid } from './window.service';
 import { Component, OnInit, Injectable, ViewChild } from '@angular/core';
 import { GlobalService } from './global.service';
 import { Song } from './components/song/song-list-item/song-list-item.component';
@@ -33,10 +33,20 @@ export class AppComponent implements OnInit {
   isMobile: boolean;
   songPlaying: Song;
   queueOpen: boolean;
+  screenWidth: number;
+  lg = Grid.lg;
+
 
   constructor(private globalService: GlobalService, public windowService: WindowService) { }
 
   ngOnInit() {
+
+    this.windowService.screenWidth.subscribe(width => {
+      this.screenWidth = width;
+      // console.log('WIDTHB: ' + width);
+      // console.log('md: ' + this.md);
+      // console.log('BOOL ' + (this.screenWidth <= this.md));
+    });
 
     this.globalService.queueOpen.subscribe(queueOpen => {
       this.queueOpen = queueOpen;
@@ -47,6 +57,10 @@ export class AppComponent implements OnInit {
     this.globalService.isMobile.subscribe(isMobile => {
       this.isMobile = isMobile;
     });
+
+    // this.globalService.isMobile.subscribe(isMobile => {
+    //   this.isMobile = isMobile;
+    // });
   }
 
   getNextSongEvent() {

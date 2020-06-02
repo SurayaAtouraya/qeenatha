@@ -3,9 +3,9 @@
               (input)="test($event.value)" (mousedown)="sliding = true" (window:mouseup)="finishSliding()">
   </mat-slider>
 
-  <mat-grid-list cols="12" rowHeight="70px" (window:resize)="onResize($event)">
+  <mat-grid-list cols="12" rowHeight="70px" (window:resize)="onResize()">
 
-    <mat-grid-tile [colspan]="sideCols">
+    <mat-grid-tile [colspan]="leftCols">
       <button (click)=rewindSong() disableRipple style="border-radius: 0;" mat-icon-button>
         <i class="material-icons">
           skip_previous
@@ -20,21 +20,21 @@
       <button disableRipple style="border-radius: 0;" mat-icon-button><i class="material-icons">skip_next</i></button>
     </mat-grid-tile>
 
-    <mat-grid-tile [colspan]="12 - (2 * sideCols)">
-      <mat-list>
+    <mat-grid-tile [colspan]="12 - (leftCols + rightCols)" class="song-item-tile">
+      <mat-list class="player-song-list">
         <app-song-list-item-player [songData]="song"></app-song-list-item-player>
       </mat-list>
     </mat-grid-tile>
 
-    <mat-grid-tile [colspan]="sideCols">
-      <button (click)="toggleAudio()" mat-icon-button>
+    <mat-grid-tile [colspan]="rightCols">
+      <button (click)="toggleAudio()" mat-icon-button *ngIf="!isMobile">
         <i class="material-icons">
           <span *ngIf="audio.muted">volume_off</span>
           <span *ngIf="!audio.muted">volume_up</span>
         </i>
       </button>
-      <button mat-icon-button><i class="material-icons">repeat</i></button>
-      <button mat-icon-button (click)="openQueue()"><i class="material-icons">arrow_drop_up</i></button>
+      <button mat-icon-button *ngIf="!isMobile"><i class="material-icons">repeat</i></button>
+      <button mat-icon-button (click)="openQueue()"><i class="material-icons arrow-icon">arrow_drop_up</i></button>
     </mat-grid-tile>
 
   </mat-grid-list>

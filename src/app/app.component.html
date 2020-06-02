@@ -1,6 +1,6 @@
 <div [ngClass]="{'hide-scrollbar': queueOpen}" style="height: 100%;" (window:resize)="windowService.onResize()">
   <mat-drawer-container>
-    <mat-drawer mode="side" opened *ngIf=!isMobile>
+    <mat-drawer mode="side" opened [hidden]="isMobile || screenWidth < lg">
       <img src="../../assets/logo.png" height="150" width="150">
       <app-side-menu></app-side-menu>
     </mat-drawer>
@@ -13,5 +13,6 @@
   </mat-drawer-container>
 </div>
 <div *ngIf="songPlaying">
-  <app-player-toolbar [songPlaying]="songPlaying" (getNextSong)="getNextSongEvent()" style="z-index: 1; background-color: #fafafa;"></app-player-toolbar>
+  <app-player-toolbar [songPlaying]="songPlaying" (getNextSong)="getNextSongEvent()" style="z-index: 1; background-color: #fafafa;"
+                      [ngClass]="{'player-large': screenWidth > lg && !isMobile,'player-small': screenWidth <= lg || isMobile}"></app-player-toolbar>
 </div>

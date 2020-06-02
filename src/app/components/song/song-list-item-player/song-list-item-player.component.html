@@ -1,7 +1,7 @@
 <mat-list-item id="song-list-item" (window:resize)="onResize($event)">
 
   <!-- Album Cover -->
-  <img id="song-cover" matListAvatar [src]="song.albumCover">
+  <img id="song-cover" matListAvatar [src]="song.albumCover" *ngIf="!isMobile">
 
   <!-- Song Name -->
   <h3 id="song-name" matLine> {{song.songName}} </h3>

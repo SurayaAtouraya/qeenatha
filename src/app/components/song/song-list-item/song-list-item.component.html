@@ -1,6 +1,7 @@
 
 
-<mat-list-item matRipple [matRippleDisabled]="!isMobile" [ngClass]="{'song-item-desktop': !isMobile}" (click)="isMobile && playSong()" id="song-list-item">
+<mat-list-item matRipple [matRippleDisabled]="true" [ngClass]="{'song-item-desktop': !isMobile}"
+               (click)="isMobile && playSong();" (mouseup)="isMobile && rippleButton($event)" id="song-list-item">
 
   <!-- Album Cover & Play Button Combo -->
   <div matListAvatar class="album-cover-play-button-container">
@@ -36,9 +37,8 @@
   </button>
 
   <!-- Small screen display:none unless hover, mobile always display -->
-  <button (click)="$event.stopPropagation();" class="song-options-button" mat-icon-button [matMenuTriggerFor]="moreOptions"
-          [ngClass]="{'hideDesktop':!isMobile}"
-          [hidden]="!isMobile && screenWidth <= sm" >
+  <button (click)="$event.stopPropagation()" class="song-options-button" mat-icon-button [matMenuTriggerFor]="moreOptions"
+          [ngClass]="{'hideDesktop':!isMobile}" [hidden]="!isMobile && screenWidth <= sm" >
     <i class="material-icons-outlined">more_vert</i>
   </button>
 

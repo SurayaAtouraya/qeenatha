@@ -1,6 +1,8 @@
 import { TestDataService } from './../../test-data.service';
 import { Component, OnInit } from '@angular/core';
 
+
+
 @Component({
   selector: 'app-test',
   templateUrl: './test.component.html',
@@ -9,10 +11,28 @@ import { Component, OnInit } from '@angular/core';
 export class TestComponent implements OnInit {
 
   newestSongs = [];
+  newestAlbums = [];
+  newestAlbumsCardData = [];
 
   constructor(private testDataService: TestDataService) { }
 
   ngOnInit(): void {
+
+
+    // TODO API CALL TO GET LATEST RELEASED ALBUMS (8 NEWEST)
+    this.testDataService.newestAlbumCards.subscribe(albums => this.newestAlbums = albums);
+    this.newestAlbums.forEach(album => {
+      this.newestAlbumsCardData.push(
+        {
+          imgSrc: album.albumCover,
+          title: album.albumName,
+          subtitle: album.albumYear,
+          dataType: 'album',
+          dataID: album.albumName
+        }
+      );
+    });
+
     // TODO API CALL TO GET 8 random songs of 8 released albums
     this.testDataService.newestSongs.subscribe(songs => {
       const used = [];

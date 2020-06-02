@@ -23,13 +23,6 @@ export class WindowService {
     this.screenWidth.next(screenWidth);
     console.log('SCREENWIDTH: ' + screenWidth);
 
-    // Remove side menu.
-    if (screenWidth < 1100) {
-      this.globalService.isMobile.next(true);
-    } else {
-      this.globalService.isMobile.next(false);
-    }
-
     if (this.isMobile) {
       this.sideCols.next(Math.trunc((screenWidth) / 232));
     } else {

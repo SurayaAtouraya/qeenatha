@@ -1,3 +1,5 @@
+import { WindowService } from 'src/app/window.service';
+import { Grid } from './../../window.service';
 import { SignUpDialogComponent } from './../sign-up-dialog/sign-up-dialog.component';
 import { LogInDialogComponent } from './../log-in-dialog/log-in-dialog.component';
 import { SettingsDialogComponent } from './../settings-dialog/settings-dialog.component';
@@ -13,12 +15,16 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private router: Router, public dialog: MatDialog, private globalService: GlobalService) { }
+  constructor(private router: Router, public dialog: MatDialog, private globalService: GlobalService,
+              private windowService: WindowService) { }
 
   // searching: boolean;
   loggedIn: boolean;
 
   isMobile: boolean;
+
+  screenWidth: number;
+  lg = Grid.lg;
 
   ngOnInit(): void {
 
@@ -30,6 +36,10 @@ export class NavbarComponent implements OnInit {
     });
 
     this.globalService.isMobile.subscribe(isMobile => this.isMobile = isMobile);
+
+    this.windowService.screenWidth.subscribe(width => {
+      this.screenWidth = width;
+    });
 
   }
 

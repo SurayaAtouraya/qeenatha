@@ -1,7 +1,8 @@
 import { GlobalService } from './../../global.service';
-import { Component, OnInit, Input, Output, EventEmitter  } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, HostListener  } from '@angular/core';
 import { interval, Subscription, BehaviorSubject } from 'rxjs';
 import { Song } from '../song/song-list-item/song-list-item.component';
+import { Grid } from 'src/app/window.service';
 
 @Component({
   selector: 'app-player-toolbar',
@@ -20,6 +21,8 @@ export class PlayerToolbarComponent implements OnInit {
   // Queue position of song playing.
   queuePos: number;
 
+  screenWidth: number;
+
   constructor(public globalService: GlobalService) { }
 
   // Song passed for playing by app component.
@@ -37,16 +40,24 @@ export class PlayerToolbarComponent implements OnInit {
   // Request the next song in the queue to play.
   @Output() getNextSong: EventEmitter<number> = new EventEmitter<number>();
 
-  sideCols: number;
+  rightCols: number;
+  leftCols: number;
   subscription: Subscription;
   audio = new Audio();
   timeElapsed: number;
   sliding: boolean;
   timeElapsedValue: BehaviorSubject<number> = new BehaviorSubject<number>(null);
 
+  sm = Grid.sm;
+  lg = Grid.lg;
+  isMobile: boolean;
 
 
   ngOnInit(): void {
+
+    this.globalService.isMobile.subscribe(isMobile => {
+      this.isMobile = isMobile;
+    });
 
     // Listen for calls to Song Player functions
     this.globalService.togglePlayState.subscribe(() => {
@@ -59,13 +70,13 @@ export class PlayerToolbarComponent implements OnInit {
     });
 
     // UI
-    this.sideCols = 1;
+    this.onResize();
 
     this.globalService.queueOpen.subscribe(queueOpen => this.queueOpen = queueOpen);
 
   }
   test(value) {
-    console.log('PUSHING VAL: ' + value);
+    // console.log('PUSHING VAL: ' + value);
     this.timeElapsedValue.next(value);
   }
 
@@ -125,15 +136,39 @@ export class PlayerToolbarComponent implements OnInit {
     this.globalService.isSongPlaying.next(true);
   }
 
-  onResize(event) {
-    if (event.target.innerWidth >= 1600 && event.target.innerWidth > 1300) {
-      this.sideCols = 1;
-    } else if (event.target.innerWidth < 1600 && event.target.innerWidth > 1300) {
-      this.sideCols = 2;
-    } else if (event.target.innerWidth < 800) {
-      this.sideCols = 3;
+  @HostListener('window:resize', ['$event'])
+  onResize() {
+    this.screenWidth = window.innerWidth;
+    // xl = 1280;
+    // lg = 992;
+    // md = 768;
+    // sm = 576;
+
+    // Large Desktop
+    if (this.screenWidth >= 1280) {
+
+    } else if (this.screenWidth < 1280 && this.screenWidth >= 992) {
+      this.rightCols = 1;
+      this.leftCols = 2;
+    } else if (this.screenWidth < 992 && this.screenWidth >= 768) {
+      this.rightCols = 1;
+      this.leftCols = 2;
+    } else if (this.screenWidth < 768 && this.screenWidth >= 576) {
+      this.rightCols = 1;
+      this.leftCols = 2;
+    } else if (this.screenWidth < 576) {
+      this.rightCols = 2;
+      this.leftCols = 4;
     }
-    // this.sideCols = (event.target.innerWidth <= 1400) ? 2 : 1;
+
+    // if (screenWidth >= 1600 && screenWidth > 1300) {
+    //   this.sideCols = 1;
+    // } else if (screenWidth < 1600 && screenWidth > 1300) {
+    //   this.sideCols = 2;
+    // } else if (screenWidth < 800) {
+    //   this.sideCols = 3;
+    // }
+    // this.sideCols = (screenWidth <= 1400) ? 2 : 1;
   }
 
   openQueue() {

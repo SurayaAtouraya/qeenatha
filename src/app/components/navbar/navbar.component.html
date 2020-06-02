@@ -1,5 +1,5 @@
 <mat-toolbar color="primary">
-  <mat-toolbar-row *ngIf="!isMobile">
+  <mat-toolbar-row [hidden]="screenWidth < lg">
 
     <!-- <button (click)="goToBillboardScreen()" mat-button>Billboard Charts</button>
     <button (click)="goToRadioScreen()" mat-button>Qeenatha Radio</button> -->
@@ -29,7 +29,7 @@
 
   </mat-toolbar-row>
 
-    <mat-toolbar-row class="mobile-buttons-container" *ngIf="isMobile">
+    <mat-toolbar-row class="mobile-buttons-container" [hidden]="screenWidth >= lg">
 
       <span>Qeenatha</span>
       <span class="spacer"></span>
@@ -88,19 +88,19 @@
         <mat-icon>search</mat-icon>
         <span>Search</span>
       </button>
-      <button mat-menu-item>
+      <button mat-menu-item (click)="goToBillboardScreen()">
         <mat-icon>library_music</mat-icon>
         <span>My Music</span>
       </button>
-      <button mat-menu-item>
+      <button mat-menu-item (click)="goToBillboardScreen()">
         <mat-icon>radio</mat-icon>
         <span>Qeenatha Radio</span>
       </button>
-      <button mat-menu-item>
+      <button mat-menu-item (click)="goToBillboardScreen()">
         <mat-icon>table_chart</mat-icon>
         <span>Billboard Charts</span>
       </button>
-      <button mat-menu-item>
+      <button mat-menu-item [matMenuTriggerFor]="menu">
         <mat-icon>account_circle</mat-icon>
         <span>My Account</span>
       </button>

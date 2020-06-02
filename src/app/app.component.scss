@@ -29,8 +29,16 @@ a {
 app-player-toolbar {
   position: fixed;
   bottom: 0;
+}
+
+.player-large {
   left: 200px;
   width: calc(100% - 200px);
+}
+
+.player-small {
+  left: 0;
+  width: 100%;
 }
 
 .container {
@@ -59,3 +67,8 @@ app-queue {
     overflow: hidden;
   }
 }
+
+[hidden] {
+  display: none !important;
+}
+
