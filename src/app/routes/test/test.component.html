@@ -1,13 +1,34 @@
-<div class="main-carousel" data-flickity='{ "cellAlign": "left", "contain": true, "draggable": false, "pageDots": false, "groupCells": "80%" }'>
-  <div class="carousel-cell" *ngFor="let album of newestAlbumsCardData">
+<swiper [config]="swiperConfig">
+  <div *ngFor="let album of newestAlbumsCardData">
     <app-card [cardData]="album"></app-card>
   </div>
+</swiper>
+
+<!-- <div class="vertical-container" fxLayout="column" fxLayoutAlign="stretch" fxFlex="50%">
+<div class="box-title">Swiper</div>
+
+<div class="content-container" fxLayout="column" fxLayoutAlign="stretch" fxFlex="auto">
+
+<div
+  class="swiper-container"
+  [swiper]="swiperConfig"
+> (indexChange)="onIndexChange($event)"
+(swiperTransitionStart)="onSwiperEvent('transitionStart')"
+(swiperTransitionEnd)="onSwiperEvent('transitionEnd')" -->
+<!--
+<div class="swiper-wrapper">
+    <div *ngFor="let album of newestAlbumsCardData" class="swiper-slide">
+        <div fxLayout="column" fxLayoutAlign="center center" fxFlexFill>
+          <app-card [cardData]="album" class="slide"></app-card>
+        </div>
+    </div>
 </div>
+</div>
+</div> -->
 
+<!-- <div class="swiper-scrollbar" [hidden]="swiperConfig.scrollbar === false"></div>
+<div class="swiper-pagination" [hidden]="swiperConfig.pagination === false"></div>
 
-<mat-list>
-  <div *ngFor="let song of newestSongs">
-    <app-song-list-item [songData]="song"></app-song-list-item>
-    <mat-divider></mat-divider>
-  </div>
-</mat-list>
+<div class="swiper-button-prev" [hidden]="swiperConfig.navigation === false"></div>
+<div class="swiper-button-next" [hidden]="swiperConfig.navigation === false"></div>
+</div>  -->

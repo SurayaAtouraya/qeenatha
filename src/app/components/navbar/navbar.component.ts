@@ -1,3 +1,4 @@
+import { BlockDialogComponent } from './../block-dialog/block-dialog.component';
 import { WindowService } from 'src/app/window.service';
 import { Grid } from './../../window.service';
 import { SignUpDialogComponent } from './../sign-up-dialog/sign-up-dialog.component';
@@ -32,7 +33,6 @@ export class NavbarComponent implements OnInit {
 
     this.globalService.loggedIn.subscribe(loggedIn => {
       this.loggedIn = loggedIn;
-      console.log(this.loggedIn);
     });
 
     this.globalService.isMobile.subscribe(isMobile => this.isMobile = isMobile);
@@ -47,9 +47,20 @@ export class NavbarComponent implements OnInit {
   //   this.searching = true;
   // }
 
-  // openMyMusicPage() {
-  //   this.router.navigate(['/library']); //, this.song.artistID
-  // }
+  goToMyMusicScreen() {
+    this.router.navigate(['/library']); //TEMP TODO
+    // if (this.loggedIn) {
+    //   this.router.navigate(['/library']); //, this.song.artistID
+    // } else {
+    //   // Show Login/signup screen
+    //   this.openBlockDialog();
+    // }
+
+  }
+
+  goToHomeScreen() {
+    this.router.navigate(['/']); //, this.song.artistID
+  }
 
   goToBillboardScreen() {
     this.router.navigate(['/billboards']); //, this.song.artistID
@@ -57,6 +68,21 @@ export class NavbarComponent implements OnInit {
 
   goToRadioScreen() {
     this.router.navigate(['/radio']); //, this.song.artistID
+  }
+
+  openSearchPage() {
+    this.router.navigate(['/search']); //, this.song.artistID
+  }
+
+  openBlockDialog(): void {
+    const dialogRef = this.dialog.open(BlockDialogComponent, {
+      width: '1000px',
+      height: '500px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 
   openSettingsDialog(): void {

@@ -1,0 +1,5 @@
+<swiper [config]="swiperConfig">
+  <div *ngFor="let slide of slides">
+    <app-card *ngIf="slideType == 'album'" [cardData]="slide"></app-card>
+  </div>
+</swiper>

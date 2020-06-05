@@ -13,10 +13,15 @@ export class CardComponent implements OnInit {
 
   @Input() cardData: CardData;
 
+  isMobile: boolean;
+
   constructor(private router: Router, private testDataService: TestDataService, private globalService: GlobalService,
               private helperFunctions: HelperFunctionsService) { }
 
   ngOnInit(): void {
+    this.globalService.isMobile.subscribe(isMobile => {
+      this.isMobile = isMobile;
+    });
   }
 
   goToDest() {

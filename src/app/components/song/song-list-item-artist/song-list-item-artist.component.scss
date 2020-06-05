@@ -1,3 +1,6 @@
+// Import styles common to all types of song-list-item
+@import '../song-list-item.scss';
+
 #song-cover {
   height: 56px;
   width: 56px;
@@ -18,26 +21,6 @@
   // margin-right: 16px;
 }
 
-mat-list-item:hover {
-  .song-options-button {
-    visibility: visible;
-  }
-}
-
-.song-options-button {
-  visibility: hidden;
-  margin-left: 8px;
-}
-
-.song-options-button-selected {
-  visibility: visible;
-  margin-left: 8px;
-}
-
-#song-name {
-  font-weight: bold;
-}
-
 .song-meta-info-selectable {
   cursor: pointer;
 }
@@ -48,6 +31,13 @@ mat-list-item:hover {
 
 //**********************************************************************************************************************
 // Album Cover & Play Button Combo
+
+// Setting Container size for image and play button
+.album-cover-play-button-container {
+  width: 56px !important;
+  height: 56px !important;
+}
+
 
 .play-button {
   position: absolute;

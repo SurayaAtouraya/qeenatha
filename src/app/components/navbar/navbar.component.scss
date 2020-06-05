@@ -19,6 +19,10 @@ mat-toolbar {
   z-index: 1000;
 }
 
+mat-toolbar-row {
+  padding-right: 8px;
+}
+
 .mobile-button {
   border-radius: 0;
   margin: 0 8px;

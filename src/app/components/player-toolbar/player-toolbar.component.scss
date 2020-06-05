@@ -10,9 +10,11 @@ mat-card {
 }
 
 mat-slider {
-  width: 100%;
-  padding: 0px;
-  margin-top: -21px !important;
+  width: calc(100% + 8px);
+  bottom: 46px;
+  position: absolute;
+  z-index: 1;
+  padding-left: 0;
 }
 
 mat-slider:hover {
@@ -34,35 +36,10 @@ mat-slider:active {
   visibility: hidden;
 }
 
-  // mat-slider ::ng-deep .mat-slider-horizontal .mat-slider-wrapper {
-  //   left: -9px !important;
-  // }
-
-
-// .show-thumb {
-// ::ng-deep.mat-slider-thumb {
-//   visibility: visible;
-// }
-
-  // mat-slider .mat-slider-wrapper ::ng-deep .mat-slider-horizontal .mat-slider-wrapper {
-  //   left: -16px !important;
-  // }
-// }
-
- .mat-slider-horizontal .mat-slider-wrapper {
-  top: 8px !important;
-  right: -16px !important;
-}
-
-::ng-deep.mat-slider-horizontal {
-  height: 16px !important;
-}
-
 mat-list {
   position: absolute;
   left: 0;
   padding: 0px;
-  // padding-bottom: 4px;
 }
 
 .player-song-list ::ng-deep.mat-list-item-content {
@@ -82,3 +59,17 @@ mat-list {
   display: flex;
   overflow-x: auto;
 }
+
+button {
+  z-index: 2;
+}
+
+::ng-deep .mat-slider-wrapper {
+  left: 0px !important;
+}
+
+// .showThumbMobile {
+//   ::ng-deep.mat-slider-thumb {
+//     visibility: visible !important;
+//   }
+// }

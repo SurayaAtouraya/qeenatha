@@ -1,6 +1,7 @@
 <mat-card>
   <mat-slider min=0 [max]="song.songLengthSeconds" [ngModel]="timeElapsed"
-              (input)="test($event.value)" (mousedown)="sliding = true" (window:mouseup)="finishSliding()">
+              (input)="test($event.value)" (mousedown)="sliding = true" (window:mouseup)="finishSliding()"
+              [ngClass]="{'showThumbMobile': isMobile}">
   </mat-slider>
 
   <mat-grid-list cols="12" rowHeight="70px" (window:resize)="onResize()">

@@ -9,7 +9,7 @@ export class SettingsDialogComponent implements OnInit {
 
   constructor() { }
 
-  screen: string;
+  screen = 'Settings';
 
   fonts: string[] = ['Noto Sans Syriac Estrangela', 'Noto Sans Syriac Eastern'];
 

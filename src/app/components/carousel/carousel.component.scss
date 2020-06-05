@@ -1,10 +1,5 @@
-@import '../../../../node_modules/swiper/css/swiper.min.css';
-
 // Portrait Phones
 @media (max-width: 575.98px) {
-  mat-list {
-    background-color: rgba(111, 14, 136, 0.2);
-  }
   ::ng-deep swiper > .swiper.s-wrapper {
     height: 276px !important;
   }
@@ -12,9 +7,6 @@
 
 // Landscape Phones
 @media (min-width: 576px) and (max-width: 767.98px) {
-  mat-list {
-    background-color: rgba(189, 136, 39, 0.2);
-  }
   ::ng-deep swiper > .swiper.s-wrapper {
     height: 308px !important;
   }
@@ -22,9 +14,6 @@
 
 // Tablets
 @media (min-width: 768px) and (max-width: 991.98px) {
-  mat-list {
-    background-color: rgba(0,0,255,0.2);
-  }
   ::ng-deep swiper > .swiper.s-wrapper {
     height: 308px !important;
   }
@@ -32,9 +21,6 @@
 
 // Desktops
 @media (min-width: 992px) and (max-width: 1279.98px) {
-  mat-list {
-    background-color: rgba(0,255,0,0.2);
-  }
   ::ng-deep swiper > .swiper.s-wrapper {
     height: 308px !important;
   }
@@ -42,32 +28,9 @@
 
 // Large Desktops
 @media (min-width: 1280px) {
-  mat-list {
-    background-color: rgba(255,0,0,0.2);
-  }
   ::ng-deep swiper > .swiper.s-wrapper {
     height: 308px !important;
   }
-}
-
-// .swiper-container {
-//   width: 600px;
-//   height: 300px;
-// }
-
-
-.carousel-cell {
-  // width: 15%;
-  // height: 300px;
-  // margin-right: 10px;
-  // border-radius: 5px;
-  counter-increment: carousel-cell;
-}
-
-/* cell number */
-.carousel-cell:before {
-  display: block;
-  text-align: center;
 }
 
 ::ng-deep swiper > .swiper.s-wrapper .swiper-pagination {

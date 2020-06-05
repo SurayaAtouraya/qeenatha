@@ -1,3 +1,30 @@
+// Portrait Phones
+@media (max-width: 575.98px) {
+  .example-list {
+    width: 100% !important;
+  }
+}
+
+// Landscape Phones
+@media (min-width: 576px) and (max-width: 767.98px) {
+
+}
+
+// Tablets
+@media (min-width: 768px) and (max-width: 991.98px) {
+
+}
+
+// Desktops
+@media (min-width: 992px) and (max-width: 1279.98px) {
+
+}
+
+// Large Desktops
+@media (min-width: 1280px) {
+
+}
+
 mat-card {
   height: calc(100% - 32px); //32px + 28px
 }

@@ -1,5 +1,7 @@
+import { GlobalService } from 'src/app/global.service';
 import { TestDataService } from './../../test-data.service';
 import { Component, OnInit } from '@angular/core';
+import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
 
 
 
@@ -10,13 +12,38 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TestComponent implements OnInit {
 
+  isMobile: boolean;
+
   newestSongs = [];
   newestAlbums = [];
   newestAlbumsCardData = [];
+  slidesPerView: number;
 
-  constructor(private testDataService: TestDataService) { }
+  public swiperConfig: SwiperConfigInterface = {
+    // a11y: true,
+    direction: 'horizontal',
+    // loop: true,
+    slidesPerView: null,
+    // spaceBetween: 50,
+    navigation: true,
+    pagination: true
+};
+
+  constructor(private testDataService: TestDataService, private globalService: GlobalService) { }
+
 
   ngOnInit(): void {
+
+    this.globalService.isMobile.subscribe(isMobile => {
+      this.isMobile = isMobile;
+      if (this.isMobile) {
+        this.slidesPerView = 1;
+      } else {
+        this.slidesPerView = 6;
+      }
+      this.swiperConfig.slidesPerView = this.slidesPerView;
+    });
+
 
 
     // TODO API CALL TO GET LATEST RELEASED ALBUMS (8 NEWEST)

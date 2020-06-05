@@ -1,24 +1,15 @@
+// Import styles common to all types of song-list-item
+@import '../song-list-item.scss';
+
 #song-number {
   color: gray;
   padding-left: 16px;
   padding-top: 10px;
 }
 
-.song-options-button {
-  margin-left: 8px;
-}
-
-.song-options-button-selected {
-  margin-left: 8px;
-}
-
 #song-length {
   color: gray;
   margin: 0 0 0 16px;
-}
-
-#song-name {
-  font-weight: bold;
 }
 
 .song-info {

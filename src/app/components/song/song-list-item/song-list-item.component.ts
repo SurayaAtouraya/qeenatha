@@ -46,9 +46,9 @@ export class SongListItemComponent implements OnInit {
 
     this.windowService.screenWidth.subscribe(width => {
       this.screenWidth = width;
-      console.log('width: ' + width);
-      console.log('sm: ' + this.sm);
-      console.log('era ' + (this.screenWidth <= this.sm));
+      // console.log('width: ' + width);
+      // console.log('sm: ' + this.sm);
+      // console.log('era ' + (this.screenWidth <= this.sm));
     });
 
     this.song = this.songData;

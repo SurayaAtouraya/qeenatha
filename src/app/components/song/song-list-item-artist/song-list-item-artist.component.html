@@ -1,9 +1,10 @@
-<mat-list-item id="song-list-item">
+<mat-list-item matRipple [matRippleDisabled]="true" [ngClass]="{'song-item-desktop': !isMobile}"
+               (click)="isMobile && playSong();" (mouseup)="isMobile && rippleButton($event)" id="song-list-item">
 
   <!-- Album Cover & Play Button Combo -->
-  <div matListAvatar class="album-cover-play-button-container" style="width: 56px;height: 56px;">
+  <div matListAvatar class="album-cover-play-button-container">
     <img matListAvatar id="album-cover-image" [src]="song.albumCover">
-    <button mat-icon-button class="play-button">
+    <button (click)="playSong()" mat-icon-button class="play-button">
       <i class="material-icons">
         play_arrow
       </i>
@@ -15,22 +16,27 @@
 
   <!-- Song Meta Info (Artist Name, Album Name, Song Length) -->
   <p matLine>
-    <span (click)="goToArtist()" class="song-meta-info song-meta-info-selectable">{{song.artistName}}</span> •
-    <span (click)="goToAlbum()" class="song-meta-info song-meta-info-selectable">{{song.albumName}}</span> •
+    <span (click)="!isMobile && goToArtist()" class="song-meta-info" [ngClass]="{'song-meta-info-selectable': !isMobile}">{{song.artistName}}</span> •
+    <span (click)="!isMobile && goToAlbum()" class="song-meta-info" [ngClass]="{'song-meta-info-selectable': !isMobile}">{{song.albumName}}</span> •
     <span class="song-meta-info">{{song.songLength}}</span>
   </p>
 
+  <!-- Song Actions -->
   <button (click)="dislikeSong()" class="song-options-button" mat-icon-button
-          [ngClass]="{'song-options-button-selected': this.song.songDisliked}">
+          [ngClass]="{'song-options-button-selected': this.song.songDisliked, 'hideDesktop':!isMobile}">
     <i [ngClass] = "{'material-icons'         :  this.song.songDisliked,
                      'material-icons-outlined': !this.song.songDisliked}">thumb_down</i>
   </button>
+
   <button (click)="likeSong()" mat-icon-button class="song-options-button"
-          [ngClass]="{'song-options-button-selected': this.song.songLiked}">
+          [ngClass]="{'song-options-button-selected': this.song.songLiked, 'hideDesktop':!isMobile}">
     <i [ngClass] = "{'material-icons'         :  this.song.songLiked,
                      'material-icons-outlined': !this.song.songLiked}">thumb_up</i>
   </button>
-  <button class="song-options-button" mat-icon-button [matMenuTriggerFor]="moreOptions" >
+
+  <!-- Small screen display:none unless hover, mobile always display -->
+  <button (click)="$event.stopPropagation()" class="song-options-button" mat-icon-button [matMenuTriggerFor]="moreOptions"
+          [ngClass]="{'hideDesktop':!isMobile}" [hidden]="!isMobile && screenWidth <= sm" >
     <i class="material-icons-outlined">more_vert</i>
   </button>
 

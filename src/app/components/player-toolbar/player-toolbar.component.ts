@@ -146,7 +146,8 @@ export class PlayerToolbarComponent implements OnInit {
 
     // Large Desktop
     if (this.screenWidth >= 1280) {
-
+      this.rightCols = 1;
+      this.leftCols = 1;
     } else if (this.screenWidth < 1280 && this.screenWidth >= 992) {
       this.rightCols = 1;
       this.leftCols = 2;

@@ -49,6 +49,16 @@ import { SongListItemQueueComponent } from './components/song/song-list-item-que
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { PlaylistAddComponent } from './components/playlist/playlist-add/playlist-add.component';
 import { TestComponent } from './routes/test/test.component';
+import { BlockDialogComponent } from './components/block-dialog/block-dialog.component';
+import { SwiperModule } from 'ngx-swiper-wrapper';
+import { SWIPER_CONFIG } from 'ngx-swiper-wrapper';
+import { SwiperConfigInterface } from 'ngx-swiper-wrapper';
+import { CarouselComponent } from './components/carousel/carousel.component';
+
+const DEFAULT_SWIPER_CONFIG: SwiperConfigInterface = {
+  direction: 'horizontal',
+  slidesPerView: 'auto'
+};
 
 @NgModule({
   declarations: [
@@ -96,17 +106,25 @@ import { TestComponent } from './routes/test/test.component';
     HeaderComponent,
     SongListItemQueueComponent,
     PlaylistAddComponent,
-    TestComponent
+    TestComponent,
+    BlockDialogComponent,
+    CarouselComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     MaterialModule,
     BrowserAnimationsModule,
-    DragDropModule
+    DragDropModule,
+    SwiperModule
   ],
   exports: [],
-  providers: [],
+  providers: [
+    {
+      provide: SWIPER_CONFIG,
+      useValue: DEFAULT_SWIPER_CONFIG
+    }
+  ],
   bootstrap: [AppComponent]
 })
 

@@ -1,12 +1,72 @@
 <div>
-<h1 mat-dialog-title>Settings</h1>
-<button mat-dialog-title mat-icon-button class="material-icons close-dialog-button">
-  <mat-icon>clear</mat-icon>
-</button>
+  <h1 mat-dialog-title>
+    <button mat-icon-button (click)="screen = 'Settings'" *ngIf="screen != 'Settings'">
+      <mat-icon>chevron_left</mat-icon>
+    </button>
+
+    {{screen}}
+  </h1>
+  <!-- <button mat-dialog-title mat-icon-button class="material-icons close-dialog-button">
+    <mat-icon>clear</mat-icon>
+  </button> -->
 </div>
-<div mat-dialog-content>
-  <mat-divider></mat-divider>
-  <mat-drawer-container class="example-container">
+
+<div mat-dialog-content style="overflow: hidden;">
+
+      <mat-action-list *ngIf="screen == 'Settings'">
+        <mat-divider></mat-divider>
+        <button mat-list-item (click)="openPersonalizationSettings()">
+          Personalization
+          <mat-icon>chevron_right</mat-icon>
+        </button>
+
+        <mat-divider></mat-divider>
+        <button mat-list-item (click)="openLanguageSettings()">
+          Language
+          <mat-icon>chevron_right</mat-icon>
+        </button>
+
+        <mat-divider></mat-divider>
+        <button mat-list-item> About
+          <mat-icon>chevron_right</mat-icon>
+        </button>
+
+        <mat-divider></mat-divider>
+      </mat-action-list>
+
+      <ng-container *ngIf="screen === 'Language'">
+        <mat-divider></mat-divider>
+        <mat-form-field>
+          <mat-label>Font Style</mat-label>
+          <mat-select [(value)]="selectedFont">
+            <mat-option *ngFor="let font of fonts" [value]="font">
+              {{font}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div style="font-size: 32px;padding-bottom: 8px;text-align: center;"
+        [ngClass]="{'assyrian-estrangela': selectedFont === 'Noto Sans Syriac Estrangela',
+                    'assyrian-eastern': selectedFont === 'Noto Sans Syriac Eastern'}">
+                         ܩܝܢܬ݂ܐ
+        </div>
+        <mat-divider></mat-divider>
+
+      </ng-container>
+
+      <ng-container *ngIf="screen === 'Personalization'">
+        <mat-divider></mat-divider>
+        <mat-list>
+          <mat-list-item>
+            <h3 id="option-title" matLine>Dark Mode</h3>
+            <mat-slide-toggle></mat-slide-toggle>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+        </mat-list>
+
+      </ng-container>
+
+
+  <!-- <mat-drawer-container class="example-container">
     <mat-drawer mode="side" opened>
 
       <mat-action-list>
@@ -52,5 +112,5 @@
 
     </mat-drawer-content>
 
-  </mat-drawer-container>
+  </mat-drawer-container> -->
 </div>

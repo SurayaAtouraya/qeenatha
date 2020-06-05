@@ -1,47 +1,5 @@
+// Import styles common to all types of song-list-item
 @import '../song-list-item.scss';
-
-// // Portrait Phones
-// @media (max-width: 575.98px) {
-
-//   // Hide Like/Dislike buttons
-//   .song-options-button:not(:last-of-type) {
-//     display: none !important;
-//   }
-
-//   mat-list-item:hover .song-options-button:last-of-type {
-//     display: block !important;
-//   }
-
-// }
-
-// // Landscape Phones
-// @media (min-width: 576px) and (max-width: 767.98px) {
-//   // Hide Like/Dislike buttons
-//   .song-options-button:not(:last-of-type) {
-//     display: none !important;
-//   }
-
-//   mat-list-item:hover .song-options-button:last-of-type {
-//     display: block !important;
-//   }
-// }
-
-// // Tablets
-// @media (min-width: 768px) and (max-width: 991.98px) {
-//   mat-list-item {
-//     background-color: red;
-//   }
-// }
-
-// // Desktops
-// @media (min-width: 992px) and (max-width: 1279.98px) {
-
-// }
-
-// // Large Desktops
-// @media (min-width: 1280px) {
-
-// }
 
 // The Song Item
 #song-list-item {
@@ -75,24 +33,6 @@
   opacity: 0.8;
 }
 
-// // Make buttons visible when hovered over (Non-Mobile)
-// mat-list-item:hover {
-//   .song-options-button {
-//     visibility: visible;
-//   }
-// }
-
-// Like, disklike and more options
-.song-options-button {
-  margin-left: 8px;
-}
-
-// Like and disklike when selected.
-.song-options-button-selected {
-  visibility: visible;
-  margin-left: 8px;
-}
-
 //**********************************************************************************************************************
 // Album Cover & Play Button Combo
 
@@ -100,7 +40,6 @@
 .album-cover-play-button-container {
   width: 56px !important;
   height: 56px !important;
-
 }
 
 .play-button {
@@ -129,15 +68,3 @@
 }
 
 //**********************************************************************************************************************
-
-#song-name {
-  font-weight: bold;
-}
-
-[hidden] {
-  display: none !important;
-}
-
-.hideDesktop {
-  visibility: hidden;
-}

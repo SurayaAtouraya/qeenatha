@@ -27,6 +27,9 @@ mat-list-item:hover {
 }
 
 //**********************************************************************************************************************
+// Import styles common to all types of song-list-item
+@import '../song-list-item.scss';
+
 // Album Cover & Play Button Combo
 
 // Setting Container size for image and play button
@@ -63,16 +66,6 @@ mat-list-item:hover {
 
 #song-name {
   font-weight: bold;
-}
-
-.song-options-button {
-  visibility: hidden;
-  margin-left: 8px;
-}
-
-.song-options-button-selected {
-  visibility: visible;
-  margin-left: 8px;
 }
 
 .play-button {

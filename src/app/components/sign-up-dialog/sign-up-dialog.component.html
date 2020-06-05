@@ -5,25 +5,31 @@
     <i class="fa fa-facebook" aria-hidden="true"></i>
     SIGN UP WITH FACEBOOK
   </button>
-  <button class="google" mat-button>
+  <button class="google" mat-button (click)="signUpProvider()">
     <i class="fa fa-google" aria-hidden="true"></i>
     SIGN UP WITH GOOGLE
   </button>
 
   <br>
 
-  <mat-form-field appearance="fill">
-    <mat-label>Email</mat-label>
-    <input matInput>
-  </mat-form-field>
+  <form>
 
-  <br>
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput [(ngModel)]="email" name="email">
+    </mat-form-field>
 
-  <mat-form-field appearance="fill">
-    <mat-label>Password</mat-label>
-    <input matInput>
-  </mat-form-field>
+    <br>
+
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input matInput [(ngModel)]="password" name="password">
+    </mat-form-field>
+
+  </form>
+
+
 </div>
 <div mat-dialog-actions>
-  <button mat-button mat-dialog-close> Log In</button>
+  <button mat-outline-button mat-dialog-close (click)="signUpEmail()"> Sign up </button>
 </div>

@@ -1,11 +1,11 @@
-<mat-card class="float-shadow" (click)="goToDest()" matRipple style="margin: 0 auto;">
+<mat-card (click)="goToDest()" matRipple style="margin: 0 auto;">
 
   <img mat-card-image [src]="cardData.imgSrc">
 
   <mat-card-content>
 
     <!-- More Options Button -->
-    <button (click)="stopDOMTree($event)" mat-icon-button class="options-button" [matMenuTriggerFor]="moreOptionsMenu">
+    <button (click)="stopDOMTree($event)" mat-icon-button class="options-button" [ngClass]="{'hideDesktop': !isMobile}" [matMenuTriggerFor]="moreOptionsMenu">
       <i class="material-icons">
         more_vert
       </i>

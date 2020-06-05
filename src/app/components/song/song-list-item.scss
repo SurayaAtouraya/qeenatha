@@ -7,7 +7,12 @@
     mat-list-item:hover .song-options-button:last-of-type {
       display: block !important;
     }
+
+    // ::ng-deep .mat-list-item-content {
+    //   padding-right: 8px !important;
+    // }
   }
+
   // Landscape Phones
   @media (min-width: 576px) and (max-width: 767.98px) {
     // Hide Like/Dislike buttons
@@ -18,15 +23,18 @@
       display: block !important;
     }
   }
+
   // Tablets
   @media (min-width: 768px) and (max-width: 991.98px) {
     mat-list-item {
       background-color: red;
     }
   }
+
   // Desktops
   @media (min-width: 992px) and (max-width: 1279.98px) {
   }
+
   // Large Desktops
   @media (min-width: 1280px) {
 }
@@ -37,10 +45,12 @@ mat-list-item:hover {
     visibility: visible;
   }
 }
+
 // Like, disklike and more options
 .song-options-button {
   margin-left: 8px;
 }
+
 // Like and disklike when selected.
 .song-options-button-selected {
   visibility: visible;

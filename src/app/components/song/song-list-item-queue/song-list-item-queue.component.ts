@@ -44,9 +44,15 @@ export class SongListItemQueueComponent implements OnInit {
 
     playlists: Playlist[] = [];
 
+    isMobile = false;
 
 
   ngOnInit(): void {
+
+    // device detection
+    this.globalService.isMobile.subscribe(isMobile => {
+      this.isMobile = isMobile;
+    });
 
     this.testDataService.playlists.subscribe(playlists => {
       this.playlists = playlists;

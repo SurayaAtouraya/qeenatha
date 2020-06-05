@@ -1,26 +1,9 @@
-mat-list-item:hover {
-  .song-options-button {
-    visibility: visible;
-  }
-}
-
-.song-options-button {
-  visibility: hidden;
-  margin-left: 8px;
-}
-
-.song-options-button-selected {
-  visibility: visible;
-  margin-left: 8px;
-}
+// Import styles common to all types of song-list-item
+@import '../song-list-item.scss';
 
 #song-length {
   color: gray;
   margin: 0 0 0 16px;
-}
-
-#song-name {
-  font-weight: bold;
 }
 
 .song-info {
